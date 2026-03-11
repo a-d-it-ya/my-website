@@ -11,11 +11,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:    #0c0e0f;
+  --ink:    #161a1d;
   --paper:  #f4f0e8;
-  --gold:   #b8960c;
+  --gold:   #d4a820;
   --rust:   #8b3a1e;
-  --dim:    #6b6560;
+  --dim:    #9a948e;
   --wire:   #1a2a1a;
   --blue:   #1a3a5c;
   --syne:   'Syne', sans-serif;
@@ -40,7 +40,7 @@ body {
   position: fixed; pointer-events: none; z-index: 2147483647;
   width: 8px; height: 8px; background: var(--gold);
   border-radius: 50%; left: 0; top: 0;
-  box-shadow: 0 0 8px rgba(184,150,12,0.9), 0 0 18px rgba(184,150,12,0.4);
+  box-shadow: 0 0 8px rgba(184,150,12,0.9), 0 0 18px rgba(212,168,32,.65);
 }
 #cursor-ring {
   position: fixed; pointer-events: none; z-index: 2147483646;
@@ -82,7 +82,7 @@ body {
 }
 .entry-name em {
   display: block; font-style: normal;
-  color: transparent; -webkit-text-stroke: 1px rgba(184,150,12,0.6);
+  color: transparent; -webkit-text-stroke: 1px rgba(212,168,32,.82);
 }
 .entry-sub {
   font-family: var(--serif); font-style: italic;
@@ -95,7 +95,7 @@ body {
   font-family: var(--mono); font-size: 0.65rem;
   letter-spacing: 0.4em; text-transform: uppercase;
   color: var(--gold); background: none;
-  border: 1px solid rgba(184,150,12,0.5);
+  border: 1px solid rgba(212,168,32,.75);
   cursor: pointer; padding: 14px 36px;
   animation: breathe 2.5s ease-in-out infinite;
 }
@@ -117,7 +117,7 @@ body {
 #corner-id {
   position: fixed; top: 28px; left: 36px; z-index: 8000;
   font-family: var(--mono); font-size: 0.6rem;
-  letter-spacing: 0.25em; color: rgba(184,150,12,0.5);
+  letter-spacing: 0.25em; color: rgba(212,168,32,.75);
   text-transform: uppercase;
   pointer-events: none;
 }
@@ -135,7 +135,7 @@ body {
   cursor: none; background: none; border: none;
   font-family: var(--mono); font-size: 0.58rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(244,240,232,0.25);
+  color: rgba(244,240,232,0.45);
   transition: color 0.3s;
   padding: 4px 0;
 }
@@ -209,16 +209,16 @@ body {
 
 .signal-manifesto {
   font-family: var(--serif); font-style: italic;
-  font-size: 1.15rem; color: rgba(244,240,232,0.55);
+  font-size: 1.15rem; color: rgba(244,240,232,0.78);
   line-height: 1.65; max-width: 400px;
-  border-left: 1px solid rgba(184,150,12,0.3);
+  border-left: 1px solid rgba(212,168,32,.55);
   padding-left: 20px;
 }
 
 .signal-coords {
   margin-top: 48px;
   font-family: var(--mono); font-size: 0.58rem;
-  letter-spacing: 0.2em; color: rgba(244,240,232,0.2);
+  letter-spacing: 0.2em; color: rgba(244,240,232,0.40);
   display: flex; gap: 24px; flex-wrap: wrap;
 }
 
@@ -236,11 +236,11 @@ body {
 .signal-status-panel {
   position: absolute; bottom: 80px; left: 40px;
   font-family: var(--mono); font-size: 0.6rem;
-  letter-spacing: 0.15em; color: rgba(184,150,12,0.4);
+  letter-spacing: 0.15em; color: rgba(212,168,32,.65);
   text-transform: uppercase; line-height: 2;
 }
 .status-line { display: flex; gap: 12px; }
-.status-line .val { color: rgba(244,240,232,0.5); }
+.status-line .val { color: rgba(244,240,232,0.75); }
 
 .signal-scroll-hint {
   grid-column: 1 / -1; grid-row: 2;
@@ -253,7 +253,7 @@ body {
 }
 .scroll-line {
   width: 60px; height: 1px;
-  background: linear-gradient(90deg, rgba(184,150,12,0.4), transparent);
+  background: linear-gradient(90deg, rgba(212,168,32,.65), transparent);
   animation: scroll-pulse 2s ease-in-out infinite;
 }
 @keyframes scroll-pulse {
@@ -280,21 +280,21 @@ body {
   font-weight: 700; padding: 0 60px;
   margin-bottom: 80px; letter-spacing: -0.02em;
 }
-.zone-title em { font-style: italic; color: rgba(244,240,232,0.35); font-weight: 400; }
+.zone-title em { font-style: italic; color: rgba(244,240,232,0.60); font-weight: 400; }
 
 /* timeline river */
 #timeline {
   position: relative;
-  padding: 0 60px 0 200px;
+  padding: 0 60px 0 240px;
 }
 #timeline::before {
   content: '';
-  position: absolute; left: 140px; top: 0; bottom: 0;
+  position: absolute; left: 160px; top: 0; bottom: 0;
   width: 1px;
   background: linear-gradient(180deg,
     transparent 0%,
-    rgba(184,150,12,0.3) 10%,
-    rgba(184,150,12,0.3) 90%,
+    rgba(212,168,32,.85) 8%,
+    rgba(212,168,32,.85) 92%,
     transparent 100%
   );
 }
@@ -309,52 +309,54 @@ body {
 
 .log-entry::before {
   content: '';
-  position: absolute; left: -4px; top: 8px;
-  width: 9px; height: 9px;
+  position: absolute; left: -85px; top: 8px;
+  width: 10px; height: 10px;
   border-radius: 50%;
-  background: var(--ink);
-  border: 1px solid rgba(184,150,12,0.5);
+  background: rgba(212,168,32,.7);
+  border: 1.5px solid rgba(212,168,32,1);
+  box-shadow: 0 0 8px rgba(212,168,32,.4);
   transition: border-color 0.3s, background 0.3s;
 }
 .log-entry:hover::before {
   background: var(--gold);
   border-color: var(--gold);
-  box-shadow: 0 0 12px rgba(184,150,12,0.5);
+  box-shadow: 0 0 16px rgba(212,168,32,.9);
+  transform: scale(1.3);
 }
 
 .log-entry.active-now::before {
   background: var(--gold);
   border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(184,150,12,0.1), 0 0 12px rgba(184,150,12,0.4);
+  box-shadow: 0 0 0 4px rgba(184,150,12,0.1), 0 0 12px rgba(212,168,32,.65);
   animation: pulse-dot 2s ease-in-out infinite;
 }
 @keyframes pulse-dot {
-  0%,100% { box-shadow: 0 0 0 4px rgba(184,150,12,0.1), 0 0 12px rgba(184,150,12,0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(184,150,12,0.05), 0 0 20px rgba(184,150,12,0.6); }
+  0%,100% { box-shadow: 0 0 0 4px rgba(184,150,12,0.1), 0 0 12px rgba(212,168,32,.65); }
+  50% { box-shadow: 0 0 0 8px rgba(184,150,12,0.05), 0 0 20px rgba(212,168,32,.82); }
 }
 
 .log-year {
-  position: absolute; left: -120px; top: 4px;
+  position: absolute; left: -230px; top: 4px;
   font-family: var(--mono); font-size: 0.65rem;
-  letter-spacing: 0.2em; color: rgba(184,150,12,0.4);
-  text-align: right; width: 80px;
+  letter-spacing: 0.2em; color: rgba(212,168,32,.95);
+  text-align: right; width: 130px;
 }
 
 .log-tag {
   font-family: var(--mono); font-size: 0.58rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--dim); margin-bottom: 10px;
+  color: rgba(212,168,32,.75); margin-bottom: 10px;
 }
 
 .log-title {
   font-family: var(--syne); font-size: 1.3rem;
   font-weight: 600; margin-bottom: 12px;
-  color: var(--paper);
+  color: #f8f4ec;
 }
 
 .log-body {
   font-family: var(--serif); font-size: 1rem;
-  color: rgba(244,240,232,0.55); line-height: 1.7;
+  color: rgba(244,240,232,0.78); line-height: 1.7;
   max-width: 560px;
 }
 .log-body strong { color: rgba(244,240,232,0.8); font-weight: 400; }
@@ -384,7 +386,7 @@ body {
 .lab-item {
   position: relative;
   padding: 48px 44px;
-  border: 1px solid rgba(244,240,232,0.06);
+  border: 1px solid rgba(244,240,232,0.12);
   overflow: hidden;
   cursor: none;
   transition: border-color 0.3s;
@@ -439,7 +441,7 @@ body {
 
 .lab-item-desc {
   font-family: var(--serif); font-size: 0.95rem;
-  color: rgba(244,240,232,0.5); line-height: 1.65;
+  color: rgba(244,240,232,0.75); line-height: 1.65;
   margin-bottom: 24px;
 }
 
@@ -448,7 +450,7 @@ body {
   font-family: var(--mono); font-size: 0.55rem;
   letter-spacing: 0.15em; text-transform: uppercase;
   padding: 4px 10px;
-  border: 1px solid rgba(244,240,232,0.08);
+  border: 1px solid rgba(244,240,232,0.15);
   color: rgba(244,240,232,0.3);
 }
 
@@ -518,8 +520,8 @@ body {
   position: absolute; bottom: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    transparent, rgba(184,150,12,0.3) 20%,
-    rgba(184,150,12,0.3) 80%, transparent
+    transparent, rgba(212,168,32,.55) 20%,
+    rgba(212,168,32,.55) 80%, transparent
   );
 }
 
@@ -578,19 +580,19 @@ body {
   grid-column: 1/-1;
   display: flex; align-items: center; gap: 20px;
   padding: 24px 48px;
-  border-bottom: 1px solid rgba(244,240,232,0.06);
+  border-bottom: 1px solid rgba(244,240,232,0.12);
 }
 #bv-back {
   font-family: var(--mono); font-size: 0.65rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(244,240,232,0.4); background: none;
+  color: rgba(244,240,232,0.65); background: none;
   border: none; cursor: none;
   transition: color 0.2s; padding: 0;
 }
 #bv-back:hover { color: var(--gold); }
 #bv-title-bar {
   font-family: var(--mono); font-size: 0.65rem;
-  letter-spacing: 0.25em; color: rgba(184,150,12,0.5);
+  letter-spacing: 0.25em; color: rgba(212,168,32,.75);
   text-transform: uppercase;
 }
 
@@ -598,7 +600,7 @@ body {
   grid-column: 1; grid-row: 2;
   display:flex;align-items:center;justify-content:center;
   padding:20px;
-  border-right:1px solid rgba(244,240,232,0.04);
+  border-right:1px solid rgba(244,240,232,0.10);
   overflow:hidden;min-height:0;
 }
 #bv-canvas{cursor:grab;display:block;}
@@ -624,7 +626,7 @@ body {
 }
 #bv-divider {
   width: 40px; height: 1px;
-  background: rgba(184,150,12,0.3);
+  background: rgba(212,168,32,.55);
   margin-bottom: 36px;
 }
 #bv-thought {
@@ -691,7 +693,7 @@ body {
 }
 .freq-text {
   font-family: var(--serif); font-size: 1.05rem;
-  line-height: 1.65; color: rgba(244,240,232,0.6);
+  line-height: 1.65; color: rgba(244,240,232,0.82);
 }
 .freq-text em { color: rgba(244,240,232,0.9); font-style: italic; }
 
@@ -715,7 +717,7 @@ body {
 .map-header { margin-bottom: 80px; }
 .map-header p {
   font-family: var(--serif); font-style: italic;
-  font-size: 1.1rem; color: rgba(244,240,232,0.35);
+  font-size: 1.1rem; color: rgba(244,240,232,0.60);
   max-width: 400px; margin-top: 16px;
 }
 
@@ -728,14 +730,14 @@ body {
   grid-template-columns: 120px 1fr;
   gap: 40px; align-items: start;
   padding: 32px 0;
-  border-top: 1px solid rgba(244,240,232,0.04);
+  border-top: 1px solid rgba(244,240,232,0.10);
   opacity: 0; transform: translateX(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .map-node.visible { opacity: 1; transform: none; }
 .map-node-time {
   font-family: var(--mono); font-size: 0.6rem;
-  letter-spacing: 0.2em; color: rgba(184,150,12,0.4);
+  letter-spacing: 0.2em; color: rgba(212,168,32,.65);
   text-transform: uppercase; padding-top: 4px;
 }
 .map-node-content {}
@@ -745,13 +747,13 @@ body {
 }
 .map-node-desc {
   font-family: var(--serif); font-size: 0.95rem;
-  color: rgba(244,240,232,0.45); line-height: 1.6;
+  color: rgba(244,240,232,0.70); line-height: 1.6;
 }
 .map-node.locked .map-node-title { opacity: 0.3; }
 .map-node.locked .map-node-desc { opacity: 0.2; }
 .map-node-redact {
   display: inline-block;
-  background: rgba(244,240,232,0.08);
+  background: rgba(244,240,232,0.15);
   color: transparent; user-select: none;
   border-radius: 2px;
 }
@@ -774,7 +776,7 @@ body {
 }
 .contact-big em {
   display: block; font-style: italic;
-  color: rgba(244,240,232,0.2); font-weight: 400;
+  color: rgba(244,240,232,0.40); font-weight: 400;
 }
 
 .contact-links {
@@ -784,13 +786,13 @@ body {
 .contact-link-item {
   display: flex; align-items: center; gap: 12px;
   padding: 20px 32px;
-  border: 1px solid rgba(244,240,232,0.07);
+  border: 1px solid rgba(244,240,232,0.14);
   text-decoration: none; color: inherit;
   transition: border-color 0.3s, background 0.3s;
   cursor: none;
 }
 .contact-link-item:hover {
-  border-color: rgba(184,150,12,0.3);
+  border-color: rgba(212,168,32,.55);
   background: rgba(184,150,12,0.03);
 }
 .cli-label {
@@ -800,7 +802,7 @@ body {
 }
 .cli-value {
   font-family: var(--mono); font-size: 0.75rem;
-  letter-spacing: 0.1em; color: rgba(244,240,232,0.6);
+  letter-spacing: 0.1em; color: rgba(244,240,232,0.82);
 }
 
 /* resume row */
@@ -811,19 +813,19 @@ body {
 .resume-label {
   font-family: var(--mono); font-size: 0.6rem;
   letter-spacing: 0.25em; text-transform: uppercase;
-  color: rgba(244,240,232,0.25);
+  color: rgba(244,240,232,0.45);
 }
 .resume-btn {
   font-family: var(--mono); font-size: 0.6rem;
   letter-spacing: 0.2em; text-transform: uppercase;
   padding: 10px 24px;
   border: 1px solid rgba(244,240,232,0.1);
-  background: none; color: rgba(244,240,232,0.5);
+  background: none; color: rgba(244,240,232,0.75);
   cursor: none; transition: all 0.2s; text-decoration: none;
   display: inline-block;
 }
 .resume-btn:hover {
-  border-color: rgba(184,150,12,0.4);
+  border-color: rgba(212,168,32,.65);
   color: var(--gold);
   background: rgba(184,150,12,0.04);
 }
@@ -844,7 +846,7 @@ body {
   font-family: var(--mono); font-size: 0.6rem;
   letter-spacing: 0.2em; text-transform: uppercase;
   background: none; border: 1px solid rgba(184,150,12,0.2);
-  color: rgba(184,150,12,0.4); cursor: none;
+  color: rgba(212,168,32,.65); cursor: none;
   padding: 10px 18px; transition: all 0.2s;
 }
 #terminal-btn:hover { border-color: var(--gold); color: var(--gold); }
@@ -864,9 +866,9 @@ body {
   scrollbar-width: thin; scrollbar-color: rgba(184,150,12,0.2) transparent;
   line-height: 1.8;
 }
-.term-line { color: rgba(244,240,232,0.45); }
+.term-line { color: rgba(244,240,232,0.70); }
 .term-line.gold { color: var(--gold); }
-.term-line.dim { color: rgba(244,240,232,0.2); }
+.term-line.dim { color: rgba(244,240,232,0.40); }
 .term-line.err { color: var(--rust); }
 .term-prompt {
   display: flex; align-items: center; gap: 8px;
@@ -909,7 +911,7 @@ body {
   #signal-left { padding: 60px 24px; }
 }
 
-    #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.07);border-bottom:3px solid rgba(184,150,12,0.2);overflow:hidden;}
+    #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(184,150,12,0.2);overflow:hidden;}
     #shelf-tube{position:absolute;top:0;left:60px;right:60px;height:3px;background:linear-gradient(90deg,transparent,rgba(235,225,185,.9) 20%,rgba(245,238,205,.98) 50%,rgba(235,225,185,.9) 80%,transparent);box-shadow:0 0 8px 3px rgba(220,200,140,.5),0 0 24px 8px rgba(190,165,100,.2);animation:flk 7s infinite;z-index:2;}
     #shelf-cast{position:absolute;top:3px;left:0;right:0;height:100%;background:linear-gradient(to bottom,rgba(215,195,130,.18) 0%,rgba(190,165,100,.09) 30%,transparent 70%);animation:flk 7s infinite;pointer-events:none;z-index:1;}
     #book-shelf{background:none!important;position:relative;z-index:1;}
@@ -922,12 +924,18 @@ body {
     .book-top{position:absolute;top:0;left:0;width:36px;height:9px;transform-origin:top center;transform:rotateX(-90deg);background:repeating-linear-gradient(90deg,#e8e0d0 0px,#e8e0d0 1.5px,#c0b8a8 1.5px,#c0b8a8 2px);opacity:.85;}
     .book-spine-text{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:90%;padding:8px 0;}
     .book-spine-author{position:absolute;bottom:8px;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:.4rem;color:rgba(255,255,255,.28);letter-spacing:.1em;text-transform:uppercase;}
+    .shelf-globe{flex-shrink:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:130px;padding-bottom:6px;cursor:default;}
+    .globe-canvas-wrap{width:110px;height:110px;position:relative;}
+    .globe-canvas-wrap canvas{border-radius:50%;cursor:grab;}
+    .globe-canvas-wrap canvas:active{cursor:grabbing;}
+    .globe-stand{width:48px;height:14px;background:linear-gradient(to bottom,#5a4a3a,#2a1a0a);border-radius:3px;margin-top:4px;box-shadow:0 2px 6px rgba(0,0,0,.5);}
+    .globe-base{width:74px;height:9px;background:linear-gradient(to bottom,#3a2a1a,#1a0e04);border-radius:3px;box-shadow:0 3px 10px rgba(0,0,0,.6);}
 
     #atlas-briefing{position:fixed;inset:0;z-index:9800;background:#b8a882;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.77,0,0.18,1);overflow-y:auto;overflow-x:hidden;font-family:'Courier New',monospace;user-select:none;-webkit-user-select:none;}
     #atlas-briefing.open{transform:translateY(0);}
     #ab-close{position:fixed;top:18px;right:24px;z-index:9810;font-family:'Courier New',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(30,15,5,.45);background:none;border:1px solid rgba(30,15,5,.2);padding:6px 14px;cursor:pointer;}
     #ab-close:hover{color:#1a0a02;border-color:rgba(30,15,5,.5);}
-    #ab-doc{max-width:760px;margin:0 auto;padding:60px 72px 100px;background:#ede4cc;box-shadow:0 0 80px rgba(0,0,0,.7);min-height:100vh;position:relative;}
+    #ab-doc{max-width:760px;margin:0 auto;padding:60px 72px 100px;background:#ede4cc;box-shadow:0 0 80px rgba(0,0,0,.7);min-height:100vh;position:relative;overflow:visible;}
     #ab-doc::before,#ab-doc::after{content:'ATLAS-BLACK // COMPARTMENTED // NEED-TO-KNOW';display:block;text-align:center;font-family:'Courier New',monospace;font-size:.6rem;letter-spacing:.2em;font-weight:bold;color:#8b0000;padding:5px 0;border-top:2px solid #8b0000;border-bottom:2px solid #8b0000;}
     #ab-doc::before{margin-bottom:36px;}#ab-doc::after{margin-top:36px;}
     .ab-corp-header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(40,20,5,.15);}
@@ -964,10 +972,10 @@ body {
     #ab-watermark span{font-size:9vw;font-weight:900;letter-spacing:.25em;color:rgba(139,0,0,.04);transform:rotate(-35deg);user-select:none;white-space:nowrap;}
     #atlas-auth{position:fixed;inset:0;z-index:9850;background:#020402;display:none;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:.7rem;letter-spacing:.15em;}
     #atlas-auth.active{display:flex;}#auth-lines{width:480px;line-height:2.2;}
-    .auth-line{color:rgba(184,150,12,.5);opacity:0;transition:opacity .3s;}.auth-line.show{opacity:1;}
-    .auth-line.ok::before{content:'[OK] ';color:#4a9a4a;}.auth-line.err-t::before{content:'[!!] ';color:#cc2200;}.auth-line.sys{color:rgba(244,240,232,.25);}
+    .auth-line{color:rgba(212,168,32,.75);opacity:0;transition:opacity .3s;}.auth-line.show{opacity:1;}
+    .auth-line.ok::before{content:'[OK] ';color:#4a9a4a;}.auth-line.err-t::before{content:'[!!] ';color:#cc2200;}.auth-line.sys{color:rgba(244,240,232,.45);}
     #auth-bar-wrap{width:480px;margin-top:24px;height:2px;background:rgba(184,150,12,.1);}
-    #auth-bar{height:2px;background:var(--gold);width:0%;box-shadow:0 0 8px rgba(184,150,12,.6);}
+    #auth-bar{height:2px;background:var(--gold);width:0%;box-shadow:0 0 8px rgba(212,168,32,.82);}
     #ss-warning{position:fixed;inset:0;z-index:99999;background:#0a0a0a;display:none;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;}
     #ss-warning.show{display:flex;}
     #ss-warning .ss-icon{font-size:3rem;color:#8b0000;margin-bottom:16px;}
@@ -1579,11 +1587,142 @@ const BOOKS = [
   { title: 'Structures: Why Things Don\'t Fall Down', author: 'J.E. Gordon', isbn: '9780306812835', color: '#3d2a4a', accent: '#8a6aaa', thought: 'The most readable engineering book ever written. Gordon explains why Roman arches work, why ships don\'t sink, why bones are shaped the way they are — and makes you feel like you\'ve been missing something obvious your whole life.', tags: ['Engineering','Materials','Design'], h: 302 },
   { title: 'A Brief History of Time', author: 'Stephen Hawking', isbn: '9780553380163', color: '#1a1a3a', accent: '#6a6ac0', thought: 'I read this before I understood half of it. Then I read it again. The section on black holes and entropy is still the most humbling 20 pages I\'ve ever read. We are genuinely tiny and temporary and that\'s fine.', tags: ['Cosmology','Physics','Existence'], h: 276 },
   { title: 'The Innovators', author: 'Walter Isaacson', isbn: '9781476708690', color: '#2a2a4a', accent: '#5a8aaa', thought: 'The real history of computing — not the myths. What strikes you is how collaborative it actually was. Ada Lovelace, Turing, Shannon, von Neumann — none of them worked in isolation. Ideas compound.', tags: ['History','Technology','Computing'], h: 320 },
+  { title: 'Elon Musk', author: 'Walter Isaacson', isbn: '9781982181284', color: '#1c2a3a', accent: '#4a9aaa', thought: "Absolute refusal to accept something is impossible.", tags: ['Biography','Technology','Ambition'], h: 308 },
+  { title: 'Steve Jobs', author: 'Walter Isaacson', isbn: '9781451648539', color: '#1a1a1a', accent: '#aaaaaa', thought: "Reality distortion field is real.", tags: ['Biography','Design','Leadership'], h: 318 },
+  { title: 'Zero to One', author: 'Peter Thiel', isbn: '9780804139892', color: '#0a1a0a', accent: '#50a050', thought: "Competition is for losers.", tags: ['Startups','Strategy','Thinking'], h: 268 },
+  { title: 'The Lean Startup', author: 'Eric Ries', isbn: '9780307887894', color: '#1a2a1a', accent: '#6aaa4a', thought: "Build-measure-learn.", tags: ['Startups','Product','Methodology'], h: 282 },
+  { title: 'The Martian', author: 'Andy Weir', isbn: '9780553418026', color: '#3a1a00', accent: '#cc6620', thought: "Watney does not panic.", tags: ['Fiction','Engineering','Survival'], h: 290 },
+  { title: "Ender's Game", author: 'Orson Scott Card', isbn: '9780812550702', color: '#0a0a2a', accent: '#4a4acc', thought: "Strategy and what it costs to be exceptional.", tags: ['Fiction','Strategy','Leadership'], h: 285 },
+  { title: 'The Selfish Gene', author: 'Richard Dawkins', isbn: '9780198788607', color: '#1a2a1a', accent: '#5a8a3a', thought: "Dawkins hands you a lens you can never put down.", tags: ['Biology','Evolution','Systems thinking'], h: 292 },
+  { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman', isbn: '9780374533557', color: '#2a1a2a', accent: '#9a5a9a', thought: "System 1 and System 2 are the most useful mental models.", tags: ['Psychology','Decision-making','Cognition'], h: 298 },
+  { title: 'Dune', author: 'Frank Herbert', isbn: '9780441013593', color: '#3a2a0a', accent: '#c8a020', thought: "Herbert built a universe with more internal logic than most engineering specs.", tags: ['Fiction','Sci-Fi','Politics'], h: 315 },
+  { title: 'Atomic Habits', author: 'James Clear', isbn: '9780735211292', color: '#1a1a2a', accent: '#6a8aaa', thought: "Systems over goals. Marginal gains are real.", tags: ['Self-improvement','Psychology','Systems'], h: 272 },
+  { title: 'The Hard Thing About Hard Things', author: 'Ben Horowitz', isbn: '9780062273208', color: '#2a1a0a', accent: '#aa6a20', thought: "No recipe for the hard stuff. Everybody bleeds.", tags: ['Startups','Leadership','Business'], h: 288 },
+  { title: 'The Pragmatic Programmer', author: 'David Thomas', isbn: '9780135957059', color: '#0a1a0a', accent: '#4a8a4a', thought: "Think about your work. Almost nobody does.", tags: ['Programming','Engineering','Craft'], h: 295 },
+  { title: 'Clean Code', author: 'Robert C. Martin', isbn: '9780132350884', color: '#0a0a1a', accent: '#4a4a8a', thought: "Code is read far more than it is written.", tags: ['Programming','Engineering','Craft'], h: 278 },
 ];
 
 function initBookShelf() {
   const shelf = document.getElementById('book-shelf');
+  function makeGlobe() {
+    const g = document.createElement('div');
+    g.className = 'shelf-globe';
+    const wrap = document.createElement('div');
+    wrap.className = 'globe-canvas-wrap';
+    const cv = document.createElement('canvas');
+    cv.width = 110; cv.height = 110;
+    wrap.appendChild(cv);
+    const stand = document.createElement('div'); stand.className = 'globe-stand';
+    const base = document.createElement('div'); base.className = 'globe-base';
+    g.appendChild(wrap); g.appendChild(stand); g.appendChild(base);
+
+    // Three.js globe
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    cam.position.z = 2.2;
+    const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+    renderer.setSize(110, 110);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Lights
+    const amb = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(amb);
+    const sun = new THREE.DirectionalLight(0xffd090, 1.4);
+    sun.position.set(3, 2, 3);
+    scene.add(sun);
+
+    // Globe sphere
+    const geo = new THREE.SphereGeometry(1, 64, 64);
+
+    // Build texture on canvas
+    const tc = document.createElement('canvas');
+    tc.width = 512; tc.height = 256;
+    const tx = tc.getContext('2d');
+
+    // Ocean
+    tx.fillStyle = '#1a3a5c';
+    tx.fillRect(0, 0, 512, 256);
+
+    // Simple continent blobs (stylised)
+    tx.fillStyle = '#2d6a3f';
+    const land = [
+      // North America
+      [60,60,90,80],[80,80,70,90],[90,100,60,80],
+      // South America
+      [100,130,50,60],[110,160,40,55],[105,185,35,45],
+      // Europe
+      [220,55,50,40],[235,70,40,35],[225,80,45,30],
+      // Africa
+      [225,100,55,45],[230,130,60,50],[235,155,50,45],[220,175,40,35],
+      // Asia
+      [270,50,130,60],[290,90,110,55],[310,120,80,50],[340,80,70,45],
+      // Australia
+      [360,160,60,40],[370,175,50,35],
+      // Antarctica hint
+      [80,230,350,20],
+    ];
+    land.forEach(([x,y,w,h]) => {
+      tx.beginPath();
+      tx.ellipse(x,y,w/2,h/2,0,0,Math.PI*2);
+      tx.fill();
+    });
+
+    // Latitude lines
+    tx.strokeStyle = 'rgba(255,255,255,0.07)';
+    tx.lineWidth = 0.8;
+    for(let lat=-75;lat<=75;lat+=30){
+      const py = (lat+90)/180*256;
+      tx.beginPath(); tx.moveTo(0,py); tx.lineTo(512,py); tx.stroke();
+    }
+    // Longitude lines
+    for(let lon=0;lon<360;lon+=30){
+      const px = lon/360*512;
+      tx.beginPath(); tx.moveTo(px,0); tx.lineTo(px,256); tx.stroke();
+    }
+
+    const tex = new THREE.CanvasTexture(tc);
+    const mat = new THREE.MeshPhongMaterial({ map: tex, specular: new THREE.Color(0x224466), shininess: 18 });
+    const mesh = new THREE.Mesh(geo, mat);
+    scene.add(mesh);
+
+    // Atmosphere glow
+    const atmGeo = new THREE.SphereGeometry(1.04, 32, 32);
+    const atmMat = new THREE.MeshPhongMaterial({
+      color: 0x4488cc, transparent: true, opacity: 0.12, side: THREE.FrontSide
+    });
+    scene.add(new THREE.Mesh(atmGeo, atmMat));
+
+    // Drag to spin
+    let dragging=false, lastX=0, lastY=0, rotX=0.3, rotY=0, velX=0, velY=0.003;
+    cv.addEventListener('mousedown', e=>{ dragging=true; lastX=e.clientX; lastY=e.clientY; velX=0; velY=0; e.stopPropagation(); });
+    window.addEventListener('mousemove', e=>{
+      if(!dragging) return;
+      velY=(e.clientX-lastX)*0.008; velX=(e.clientY-lastY)*0.008;
+      rotY+=velY; rotX+=velX;
+      lastX=e.clientX; lastY=e.clientY;
+    });
+    window.addEventListener('mouseup', ()=>{ dragging=false; });
+
+    // Touch support
+    cv.addEventListener('touchstart', e=>{ dragging=true; lastX=e.touches[0].clientX; lastY=e.touches[0].clientY; velX=0; velY=0; e.stopPropagation(); },{passive:true});
+    cv.addEventListener('touchmove', e=>{
+      if(!dragging) return;
+      velY=(e.touches[0].clientX-lastX)*0.008; velX=(e.touches[0].clientY-lastY)*0.008;
+      rotY+=velY; rotX+=velX; lastX=e.touches[0].clientX; lastY=e.touches[0].clientY;
+    },{passive:true});
+    cv.addEventListener('touchend', ()=>{ dragging=false; },{passive:true});
+
+    (function animate(){
+      requestAnimationFrame(animate);
+      if(!dragging){ rotY+=velY; velY*=0.97; }
+      rotX=Math.max(-1.2,Math.min(1.2,rotX));
+      mesh.rotation.y=rotY; mesh.rotation.x=rotX;
+      renderer.render(scene,cam);
+    })();
+    return g;
+  }
   BOOKS.forEach((book, i) => {
+    if(i === 10) shelf.appendChild(makeGlobe());
     const wrap = document.createElement('div');
     wrap.className = 'shelf-book'; wrap.style.height = book.h + 'px';
     const b3 = document.createElement('div');
@@ -1667,14 +1806,7 @@ function openBookViewer(idx) {
 
   const W=1.4,H=2.0,D=0.2;
   const geo=new THREE.BoxGeometry(W,H,D);
-  const mats=[
-    new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#222'),0.3)}),
-    new THREE.MeshLambertMaterial({map:makeFaceTex('spine')}),
-    new THREE.MeshLambertMaterial({color:0x111}),
-    new THREE.MeshLambertMaterial({color:0x111}),
-    new THREE.MeshLambertMaterial({map:makeFaceTex('cover')}),
-    new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#000'),0.4)}),
-  ];
+  const mats=[new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#222'),0.3)}),new THREE.MeshLambertMaterial({map:makeFaceTex('spine')}),new THREE.MeshLambertMaterial({color:0x111}),new THREE.MeshLambertMaterial({color:0x111}),new THREE.MeshLambertMaterial({map:makeFaceTex('cover')}),new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#000'),0.4)})];
   bvMesh=new THREE.Mesh(geo,mats); bvScene.add(bvMesh);
   if(book.isbn){const img=new Image();img.crossOrigin='anonymous';img.onload=()=>{const t=new THREE.Texture(img);t.needsUpdate=true;mats[4].map=t;mats[4].needsUpdate=true;};img.src=`https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`;}
 
@@ -1729,10 +1861,23 @@ function initTerminal() {
   btn.addEventListener('click', () => {
     term.classList.toggle('open');
     if (term.classList.contains('open')) {
+      output.innerHTML = '';
       print('ATLAS TERMINAL v1.0 — type help', 'gold');
       print('', 'dim');
       input.focus();
     }
+  });
+
+  // Close on click outside
+  document.addEventListener('click', (e) => {
+    if (!term.contains(e.target) && !btn.contains(e.target)) {
+      term.classList.remove('open');
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') term.classList.remove('open');
   });
 
   function print(text, cls='') {
@@ -1884,158 +2029,35 @@ function initFooterTime() {
 
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('ab-close').addEventListener('click', function() {
-    document.getElementById('atlas-briefing').classList.remove('open');
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('ab-close').addEventListener('click',function(){document.getElementById('atlas-briefing').classList.remove('open');});
+  document.getElementById('atlas-briefing').addEventListener('click',function(e){
+    if(e.target === this) this.classList.remove('open');
   });
-
-  // Screenshot warning
-  function showSSWarning() {
-    const briefing = document.getElementById('atlas-briefing');
-    if (!briefing.classList.contains('open')) return;
-    const w = document.getElementById('ss-warning');
-    w.classList.add('show');
-    setTimeout(() => w.classList.remove('show'), 3000);
-  }
-
-  // PrintScreen key
-  document.addEventListener('keyup', e => {
-    if (e.key === 'PrintScreen') {
-      navigator.clipboard.writeText('').catch(()=>{});
-      showSSWarning();
-    }
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') document.getElementById('atlas-briefing').classList.remove('open');
   });
-
-  // Visibility change (alt+tab screenshot tools, snipping tool)
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) showSSWarning();
-  });
-
-  // Windows Snipping Tool shortcut (Win+Shift+S = Meta+Shift+S)
-  document.addEventListener('keydown', e => {
-    if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'S' || e.key === 's' || e.key === '3' || e.key === '4')) {
-      showSSWarning();
-    }
-  });
+  function showSSWarning(){if(!document.getElementById('atlas-briefing').classList.contains('open'))return;const w=document.getElementById('ss-warning');w.classList.add('show');setTimeout(()=>w.classList.remove('show'),3000);}
+  document.addEventListener('keyup',e=>{if(e.key==='PrintScreen'){navigator.clipboard.writeText('').catch(()=>{});showSSWarning();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)showSSWarning();});
+  document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.shiftKey&&(e.key==='S'||e.key==='s'||e.key==='3'||e.key==='4'))showSSWarning();});
 });
 </script>
-<div id="ss-warning">
-  <div class="ss-icon">⚠</div>
-  <div class="ss-title">Screenshot Detected</div>
-  <div class="ss-msg">This document is classified<br>ATLAS-BLACK // COMPARTMENTED<br>Unauthorised capture is a breach of confidentiality<br>and may result in immediate termination</div>
-</div>
-
+<div id="ss-warning"><div class="ss-icon">⚠</div><div class="ss-title">Screenshot Detected</div><div class="ss-msg">This document is classified<br>ATLAS-BLACK // COMPARTMENTED<br>Unauthorised capture is a breach of confidentiality<br>and may result in immediate termination</div></div>
 <div id="atlas-auth"><div id="auth-lines"></div><div id="auth-bar-wrap"><div id="auth-bar"></div></div></div>
-
-<div id="atlas-briefing">
-  <div id="ab-watermark"><span>ATLAS PROPRIETARY</span></div>
-  <button id="ab-close">&#x2715; CLOSE</button>
-  <div id="ab-doc">
-
-  <div class="ab-corp-header">
-    <div class="ab-corp-name">Atlas Corporation</div>
-    <div class="ab-corp-div">Advanced Research Division &mdash; Document Control</div>
-    <div class="ab-corp-sub">Internal Distribution Only &mdash; Not For External Disclosure</div>
-  </div>
-
-  <div class="ab-stamp-row">
-    <div>
-      <div class="ab-ts-stamp">[CLASSIFIED]</div>
-      <div style="font-size:.52rem;color:rgba(139,0,0,.5);margin-top:5px;">ATLAS-BLACK &nbsp;/&nbsp; COMPARTMENTED &nbsp;/&nbsp; ARD-EYES-ONLY</div>
-    </div>
-    <div class="ab-doc-ref">
-      DOC REF: ATLAS/ARD/2024/PROG-001<br>
-      DATE: <span id="ab-date"></span><br>
-      COPY: <span class="ab-redact">003</span> of <span class="ab-redact">007</span><br>
-      HANDLING: EYES ONLY — DO NOT COPY
-    </div>
-  </div>
-
-  <div class="ab-doc-title">
-    <h1>Advanced Research Division &mdash; Program Architecture Brief</h1>
-    <p>Subject: Autonomous Systems Development &mdash; Internal Disclosure</p>
-    <p>Ref: ARD Standing Directive &mdash; Clause <span class="ab-redact">7(c)(iv)</span> &mdash; Black Program Oversight</p>
-  </div>
-
-  <div class="ab-meta-block">
-    <table>
-      <tr><td>Program Code</td><td>ATLAS-BLACK / <span class="ab-redact">████████</span></td></tr>
-      <tr><td>Originator</td><td>A. Singh &mdash; Founder &amp; Chief Architect</td></tr>
-      <tr><td>Classification</td><td>ARD-BLACK (Above Company Confidential)</td></tr>
-      <tr><td>Program Phase</td><td>Phase 0 &mdash; Pre-Formal Establishment</td></tr>
-      <tr><td>Facility</td><td><span class="ab-redact">████████████████</span>, India</td></tr>
-      <tr><td>Reporting Chain</td><td>Founder &rarr; <span class="ab-redact">████████████████████████████</span></td></tr>
-      <tr><td>External Disclosure</td><td><strong>PROHIBITED</strong> &mdash; Incl. regulatory &amp; government bodies</td></tr>
-    </table>
-  </div>
-
-  <div class="ab-section">
-    <div class="ab-section-num">Section 1</div>
-    <h3>Strategic Context</h3>
-    <div class="ab-body">
-      <p>Atlas Corporation's dependency on third-party vendors and foreign-sourced components for core technology represents an unacceptable risk to program continuity. Supply chain exposure, IP leakage, and regulatory interference from external jurisdictions have been assessed as Tier-1 threats to long-term program viability.</p>
-      <p>The Advanced Research Division is established to develop all critical technologies in-house, under full Atlas IP ownership, outside the visibility of <span class="ab-redact">████████████████████████████████████████</span>. No external contractors, no government co-funding, no disclosure obligations.</p>
-    </div>
-    <div class="ab-annotation">Internal threat assessment <span class="ab-redact">ARD-TA-2024-██</span>: external vendor risk classified as program-critical. Full vertical integration mandated.</div>
-  </div>
-
-  <div class="ab-section">
-    <div class="ab-section-num">Section 2</div>
-    <h3>Program Objectives</h3>
-    <div class="ab-body">
-      <p>Develop full-stack autonomous systems capability entirely within Atlas. Achieve operational edge-AI inference with zero cloud dependency. Build indigenous C2 software architecture for multi-domain autonomous operations — air, surface, subsurface.</p>
-      <p>Research and prototype <span class="ab-redact">compact power systems</span> for extended-endurance platforms. Establish orbital sensor layer for <span class="ab-redact">████████████████████████████████</span>. All output to remain Atlas proprietary — no licensing, no joint ventures, no government transfer.</p>
-    </div>
-  </div>
-
-  <div class="ab-section">
-    <div class="ab-section-num">Section 3</div>
-    <h3>Active Work Streams</h3>
-    <table class="ab-program-table">
-      <tr><th>Work Stream</th><th>Internal Code</th><th>Status</th><th>Notes</th></tr>
-      <tr><td>Edge AI / Vision</td><td>PROJECT-IRIS</td><td class="ab-status-active">ACTIVE</td><td>Object inference, embedded camera, local LLM. Testbed live.</td></tr>
-      <tr><td>C2 Software</td><td>ATLAS-OS</td><td class="ab-status-active">ACTIVE</td><td>Multi-domain command interface. Architecture phase.</td></tr>
-      <tr><td>Sensor Mesh</td><td><span class="ab-redact">MESH-NODE</span></td><td class="ab-status-dev">IN DEV</td><td>Low-power MCU mesh, node-level inference.</td></tr>
-      <tr><td>Signature Control</td><td><span class="ab-redact">██████████</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td><td><span class="ab-redact-line" style="width:90%"></span></td></tr>
-      <tr><td>Power Systems</td><td><span class="ab-redact">TRISO-X</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td><td>Compact <span class="ab-redact">reactor / Brayton</span> cycle research. <span class="ab-redact">████████████</span> application.</td></tr>
-      <tr><td>Orbital Layer</td><td><span class="ab-redact">GRID-EYE</span></td><td class="ab-status-class">LONG-TERM</td><td><span class="ab-redact">████████████████████████████████████</span>. Phase IV target.</td></tr>
-    </table>
-  </div>
-
-  <div class="ab-section">
-    <div class="ab-section-num">Section 4</div>
-    <h3>Founder Profile</h3>
-    <div class="ab-body">
-      <p>B.Tech ECE. Flight Computer Lead, aerospace contractor — 2022 to 2023. Sole firmware owner, flight-critical embedded Linux systems. Sensor fusion, real-time control, hardware-software integration on live platforms.</p>
-      <p>Core capability: embedded C, edge-AI deployment, autonomous platform architecture, C2 software design. Currently leading all ARD work streams in parallel with <span class="ab-redact">████████████████████████████</span>.</p>
-    </div>
-    <div class="ab-annotation">ARD access level: UNRESTRICTED. Clearance granted by founder authority. No external vetting required or permitted.</div>
-  </div>
-
-  <div class="ab-section">
-    <div class="ab-section-num">Section 5</div>
-    <h3>Withheld Annexures</h3>
-    <div class="ab-body">
-      <p>Annex A &mdash; <span class="ab-redact-line" style="width:74%"></span></p>
-      <p>Annex B &mdash; <span class="ab-redact-line" style="width:60%"></span></p>
-      <p>Annex C &mdash; <span class="ab-redact-line" style="width:82%"></span></p>
-      <p>Annex D &mdash; <span class="ab-redact-line" style="width:50%"></span></p>
-    </div>
-  </div>
-
-  <div class="ab-signature-block">
-    <div><div class="ab-sig-field"></div><div class="ab-sig-label">Program Architect &mdash; Signature / Date</div></div>
-    <div><div class="ab-sig-field"></div><div class="ab-sig-label">ARD Oversight &mdash; <span class="ab-redact">REDACTED</span></div></div>
-  </div>
-
-  <div class="ab-footer-strip">
-    Unauthorised disclosure — including to regulatory or government bodies — constitutes a breach of Atlas Corporation confidentiality agreements<br>
-    and may be pursued under applicable trade secret and corporate espionage law.<br>
-    Document to be destroyed after review. No copies permitted.
-  </div>
-
-  </div>
-</div>
+<div id="atlas-briefing"><div id="ab-watermark"><span>ATLAS PROPRIETARY</span></div><button id="ab-close">&#x2715; CLOSE</button><div id="ab-doc">
+<div class="ab-corp-header"><div class="ab-corp-name">Atlas Corporation</div><div class="ab-corp-div">Advanced Research Division &mdash; Document Control</div><div class="ab-corp-sub">Internal Distribution Only &mdash; Not For External Disclosure</div></div>
+<div class="ab-stamp-row"><div><div class="ab-ts-stamp">[CLASSIFIED]</div><div style="font-size:.52rem;color:rgba(139,0,0,.5);margin-top:5px;">ATLAS-BLACK &nbsp;/&nbsp; COMPARTMENTED &nbsp;/&nbsp; ARD-EYES-ONLY</div></div><div class="ab-doc-ref">DOC REF: ATLAS/ARD/2024/PROG-001<br>DATE: <span id="ab-date"></span><br>COPY: <span class="ab-redact">003</span> of <span class="ab-redact">007</span><br>HANDLING: EYES ONLY — DO NOT COPY</div></div>
+<div class="ab-doc-title"><h1>Advanced Research Division &mdash; Program Architecture Brief</h1><p>Subject: Autonomous Systems Development &mdash; Internal Disclosure</p><p>Ref: ARD Standing Directive &mdash; Clause <span class="ab-redact">7(c)(iv)</span> &mdash; Black Program Oversight</p></div>
+<div class="ab-meta-block"><table><tr><td>Program Code</td><td>ATLAS-BLACK / <span class="ab-redact">████████</span></td></tr><tr><td>Originator</td><td>A. Singh &mdash; Founder &amp; Chief Architect</td></tr><tr><td>Classification</td><td>ARD-BLACK (Above Company Confidential)</td></tr><tr><td>Program Phase</td><td>Phase 0 &mdash; Pre-Formal Establishment</td></tr><tr><td>Facility</td><td><span class="ab-redact">████████████████</span>, India</td></tr><tr><td>Reporting Chain</td><td>Founder &rarr; <span class="ab-redact">████████████████████████████</span></td></tr><tr><td>External Disclosure</td><td><strong>PROHIBITED</strong> &mdash; Incl. regulatory &amp; government bodies</td></tr></table></div>
+<div class="ab-section"><div class="ab-section-num">Section 1</div><h3>Strategic Context</h3><div class="ab-body"><p>Atlas Corporation dependency on third-party vendors represents an unacceptable risk. Supply chain exposure, IP leakage, and regulatory interference assessed as Tier-1 threats.</p><p>The ARD is established to develop all critical technologies in-house, under full Atlas IP ownership, outside the visibility of <span class="ab-redact">████████████████████████████████████████</span>. No external contractors, no government co-funding, no disclosure obligations.</p></div><div class="ab-annotation">Internal threat assessment <span class="ab-redact">ARD-TA-2024-██</span>: external vendor risk classified as program-critical. Full vertical integration mandated.</div></div>
+<div class="ab-section"><div class="ab-section-num">Section 2</div><h3>Program Objectives</h3><div class="ab-body"><p>Develop full-stack autonomous systems capability entirely within Atlas. Achieve operational edge-AI inference with zero cloud dependency. Build C2 software architecture for multi-domain autonomous operations.</p><p>Research and prototype <span class="ab-redact">compact power systems</span> for extended-endurance platforms. Establish orbital sensor layer. All output Atlas proprietary.</p></div></div>
+<div class="ab-section"><div class="ab-section-num">Section 3</div><h3>Active Work Streams</h3><table class="ab-program-table"><tr><th>Work Stream</th><th>Code</th><th>Status</th><th>Notes</th></tr><tr><td>Edge AI / Vision</td><td>PROJECT-IRIS</td><td class="ab-status-active">ACTIVE</td><td>Object inference, embedded camera, local LLM.</td></tr><tr><td>C2 Software</td><td>ATLAS-OS</td><td class="ab-status-active">ACTIVE</td><td>Multi-domain command interface.</td></tr><tr><td>Sensor Mesh</td><td><span class="ab-redact">MESH-NODE</span></td><td class="ab-status-dev">IN DEV</td><td>Low-power MCU mesh.</td></tr><tr><td>Signature Control</td><td><span class="ab-redact">██████████</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td><td><span class="ab-redact-line" style="width:90%"></span></td></tr><tr><td>Power Systems</td><td><span class="ab-redact">TRISO-X</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td><td>Compact <span class="ab-redact">reactor / Brayton</span> cycle.</td></tr><tr><td>Orbital Layer</td><td><span class="ab-redact">GRID-EYE</span></td><td class="ab-status-class">LONG-TERM</td><td>Phase IV target.</td></tr></table></div>
+<div class="ab-section"><div class="ab-section-num">Section 4</div><h3>Founder Profile</h3><div class="ab-body"><p>B.Tech ECE. Flight Computer Lead, aerospace contractor 2022-2023. Sole firmware owner, flight-critical embedded Linux systems. Sensor fusion, real-time control on live platforms.</p><p>Core capability: embedded C, edge-AI, autonomous platform architecture, C2 software.</p></div><div class="ab-annotation">ARD access level: UNRESTRICTED. Clearance granted by founder authority.</div></div>
+<div class="ab-section"><div class="ab-section-num">Section 5</div><h3>Withheld Annexures</h3><div class="ab-body"><p>Annex A &mdash; <span class="ab-redact-line" style="width:74%"></span></p><p>Annex B &mdash; <span class="ab-redact-line" style="width:60%"></span></p><p>Annex C &mdash; <span class="ab-redact-line" style="width:82%"></span></p><p>Annex D &mdash; <span class="ab-redact-line" style="width:50%"></span></p></div></div>
+<div class="ab-signature-block"><div><div class="ab-sig-field"></div><div class="ab-sig-label">Program Architect &mdash; Signature / Date</div></div><div><div class="ab-sig-field"></div><div class="ab-sig-label">ARD Oversight &mdash; <span class="ab-redact">REDACTED</span></div></div></div>
+<div class="ab-footer-strip">Unauthorised disclosure constitutes a breach of Atlas Corporation confidentiality agreements and may be pursued under applicable trade secret law. Document to be destroyed after review.</div>
+</div></div>
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 </body>
