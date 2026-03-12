@@ -11,11 +11,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:    #161a1d;
+  --ink:    #0c0e0f;
   --paper:  #f4f0e8;
   --gold:   #d4a820;
   --rust:   #8b3a1e;
-  --dim:    #9a948e;
+  --dim:    #a09a94;
   --wire:   #1a2a1a;
   --blue:   #1a3a5c;
   --syne:   'Syne', sans-serif;
@@ -40,7 +40,7 @@ body {
   position: fixed; pointer-events: none; z-index: 2147483647;
   width: 8px; height: 8px; background: var(--gold);
   border-radius: 50%; left: 0; top: 0;
-  box-shadow: 0 0 8px rgba(184,150,12,0.9), 0 0 18px rgba(212,168,32,.65);
+  box-shadow: 0 0 8px rgba(184,150,12,0.9), 0 0 18px rgba(184,150,12,0.4);
 }
 #cursor-ring {
   position: fixed; pointer-events: none; z-index: 2147483646;
@@ -82,7 +82,7 @@ body {
 }
 .entry-name em {
   display: block; font-style: normal;
-  color: transparent; -webkit-text-stroke: 1px rgba(212,168,32,.82);
+  color: transparent; -webkit-text-stroke: 1px rgba(184,150,12,0.6);
 }
 .entry-sub {
   font-family: var(--serif); font-style: italic;
@@ -95,7 +95,7 @@ body {
   font-family: var(--mono); font-size: 0.65rem;
   letter-spacing: 0.4em; text-transform: uppercase;
   color: var(--gold); background: none;
-  border: 1px solid rgba(212,168,32,.75);
+  border: 1px solid rgba(184,150,12,0.5);
   cursor: pointer; padding: 14px 36px;
   animation: breathe 2.5s ease-in-out infinite;
 }
@@ -117,7 +117,7 @@ body {
 #corner-id {
   position: fixed; top: 28px; left: 36px; z-index: 8000;
   font-family: var(--mono); font-size: 0.6rem;
-  letter-spacing: 0.25em; color: rgba(212,168,32,.75);
+  letter-spacing: 0.25em; color: rgba(184,150,12,0.5);
   text-transform: uppercase;
   pointer-events: none;
 }
@@ -135,7 +135,7 @@ body {
   cursor: none; background: none; border: none;
   font-family: var(--mono); font-size: 0.58rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(244,240,232,0.45);
+  color: rgba(244,240,232,0.25);
   transition: color 0.3s;
   padding: 4px 0;
 }
@@ -209,16 +209,16 @@ body {
 
 .signal-manifesto {
   font-family: var(--serif); font-style: italic;
-  font-size: 1.15rem; color: rgba(244,240,232,0.78);
+  font-size: 1.15rem; color: rgba(244,240,232,0.55);
   line-height: 1.65; max-width: 400px;
-  border-left: 1px solid rgba(212,168,32,.55);
+  border-left: 1px solid rgba(184,150,12,0.3);
   padding-left: 20px;
 }
 
 .signal-coords {
   margin-top: 48px;
   font-family: var(--mono); font-size: 0.58rem;
-  letter-spacing: 0.2em; color: rgba(244,240,232,0.40);
+  letter-spacing: 0.2em; color: rgba(244,240,232,0.2);
   display: flex; gap: 24px; flex-wrap: wrap;
 }
 
@@ -236,11 +236,11 @@ body {
 .signal-status-panel {
   position: absolute; bottom: 80px; left: 40px;
   font-family: var(--mono); font-size: 0.6rem;
-  letter-spacing: 0.15em; color: rgba(212,168,32,.65);
+  letter-spacing: 0.15em; color: rgba(184,150,12,0.4);
   text-transform: uppercase; line-height: 2;
 }
 .status-line { display: flex; gap: 12px; }
-.status-line .val { color: rgba(244,240,232,0.75); }
+.status-line .val { color: rgba(244,240,232,0.5); }
 
 .signal-scroll-hint {
   grid-column: 1 / -1; grid-row: 2;
@@ -253,7 +253,7 @@ body {
 }
 .scroll-line {
   width: 60px; height: 1px;
-  background: linear-gradient(90deg, rgba(212,168,32,.65), transparent);
+  background: linear-gradient(90deg, rgba(184,150,12,0.4), transparent);
   animation: scroll-pulse 2s ease-in-out infinite;
 }
 @keyframes scroll-pulse {
@@ -280,7 +280,7 @@ body {
   font-weight: 700; padding: 0 60px;
   margin-bottom: 80px; letter-spacing: -0.02em;
 }
-.zone-title em { font-style: italic; color: rgba(244,240,232,0.60); font-weight: 400; }
+.zone-title em { font-style: italic; color: rgba(244,240,232,0.35); font-weight: 400; }
 
 /* timeline river */
 #timeline {
@@ -289,12 +289,12 @@ body {
 }
 #timeline::before {
   content: '';
-  position: absolute; left: 160px; top: 0; bottom: 0;
+  position: absolute; left: 180px; top: 0; bottom: 0;
   width: 1px;
   background: linear-gradient(180deg,
     transparent 0%,
-    rgba(212,168,32,.85) 8%,
-    rgba(212,168,32,.85) 92%,
+    rgba(212,168,32,0.8) 5%,
+    rgba(212,168,32,0.8) 95%,
     transparent 100%
   );
 }
@@ -309,54 +309,52 @@ body {
 
 .log-entry::before {
   content: '';
-  position: absolute; left: -85px; top: 8px;
+  position: absolute; left: -64px; top: 8px;
   width: 10px; height: 10px;
   border-radius: 50%;
-  background: rgba(212,168,32,.7);
-  border: 1.5px solid rgba(212,168,32,1);
-  box-shadow: 0 0 8px rgba(212,168,32,.4);
-  transition: border-color 0.3s, background 0.3s;
+  background: var(--ink);
+  border: 1.5px solid rgba(212,168,32,0.5);
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 .log-entry:hover::before {
   background: var(--gold);
   border-color: var(--gold);
-  box-shadow: 0 0 16px rgba(212,168,32,.9);
-  transform: scale(1.3);
+  box-shadow: 0 0 12px rgba(212,168,32,0.6);
 }
 
 .log-entry.active-now::before {
   background: var(--gold);
   border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(184,150,12,0.1), 0 0 12px rgba(212,168,32,.65);
+  box-shadow: 0 0 0 4px rgba(212,168,32,0.15), 0 0 14px rgba(212,168,32,0.5);
   animation: pulse-dot 2s ease-in-out infinite;
 }
 @keyframes pulse-dot {
-  0%,100% { box-shadow: 0 0 0 4px rgba(184,150,12,0.1), 0 0 12px rgba(212,168,32,.65); }
-  50% { box-shadow: 0 0 0 8px rgba(184,150,12,0.05), 0 0 20px rgba(212,168,32,.82); }
+  0%,100% { box-shadow: 0 0 0 4px rgba(212,168,32,0.15), 0 0 14px rgba(212,168,32,0.5); }
+  50% { box-shadow: 0 0 0 9px rgba(212,168,32,0.06), 0 0 22px rgba(212,168,32,0.65); }
 }
 
 .log-year {
-  position: absolute; left: -230px; top: 4px;
+  position: absolute; left: -185px; top: 4px;
   font-family: var(--mono); font-size: 0.65rem;
-  letter-spacing: 0.2em; color: rgba(212,168,32,.95);
-  text-align: right; width: 130px;
+  letter-spacing: 0.2em; color: rgba(212,168,32,0.95);
+  text-align: right; width: 100px;
 }
 
 .log-tag {
   font-family: var(--mono); font-size: 0.58rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(212,168,32,.75); margin-bottom: 10px;
+  color: var(--dim); margin-bottom: 10px;
 }
 
 .log-title {
   font-family: var(--syne); font-size: 1.3rem;
   font-weight: 600; margin-bottom: 12px;
-  color: #f8f4ec;
+  color: var(--paper);
 }
 
 .log-body {
   font-family: var(--serif); font-size: 1rem;
-  color: rgba(244,240,232,0.78); line-height: 1.7;
+  color: rgba(244,240,232,0.55); line-height: 1.7;
   max-width: 560px;
 }
 .log-body strong { color: rgba(244,240,232,0.8); font-weight: 400; }
@@ -386,7 +384,7 @@ body {
 .lab-item {
   position: relative;
   padding: 48px 44px;
-  border: 1px solid rgba(244,240,232,0.12);
+  border: 1px solid rgba(244,240,232,0.06);
   overflow: hidden;
   cursor: none;
   transition: border-color 0.3s;
@@ -441,7 +439,7 @@ body {
 
 .lab-item-desc {
   font-family: var(--serif); font-size: 0.95rem;
-  color: rgba(244,240,232,0.75); line-height: 1.65;
+  color: rgba(244,240,232,0.5); line-height: 1.65;
   margin-bottom: 24px;
 }
 
@@ -450,7 +448,7 @@ body {
   font-family: var(--mono); font-size: 0.55rem;
   letter-spacing: 0.15em; text-transform: uppercase;
   padding: 4px 10px;
-  border: 1px solid rgba(244,240,232,0.15);
+  border: 1px solid rgba(244,240,232,0.08);
   color: rgba(244,240,232,0.3);
 }
 
@@ -520,8 +518,8 @@ body {
   position: absolute; bottom: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    transparent, rgba(212,168,32,.55) 20%,
-    rgba(212,168,32,.55) 80%, transparent
+    transparent, rgba(184,150,12,0.3) 20%,
+    rgba(184,150,12,0.3) 80%, transparent
   );
 }
 
@@ -580,19 +578,19 @@ body {
   grid-column: 1/-1;
   display: flex; align-items: center; gap: 20px;
   padding: 24px 48px;
-  border-bottom: 1px solid rgba(244,240,232,0.12);
+  border-bottom: 1px solid rgba(244,240,232,0.06);
 }
 #bv-back {
   font-family: var(--mono); font-size: 0.65rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(244,240,232,0.65); background: none;
+  color: rgba(244,240,232,0.4); background: none;
   border: none; cursor: none;
   transition: color 0.2s; padding: 0;
 }
 #bv-back:hover { color: var(--gold); }
 #bv-title-bar {
   font-family: var(--mono); font-size: 0.65rem;
-  letter-spacing: 0.25em; color: rgba(212,168,32,.75);
+  letter-spacing: 0.25em; color: rgba(184,150,12,0.5);
   text-transform: uppercase;
 }
 
@@ -600,7 +598,7 @@ body {
   grid-column: 1; grid-row: 2;
   display:flex;align-items:center;justify-content:center;
   padding:20px;
-  border-right:1px solid rgba(244,240,232,0.10);
+  border-right:1px solid rgba(244,240,232,0.04);
   overflow:hidden;min-height:0;
 }
 #bv-canvas{cursor:grab;display:block;}
@@ -626,7 +624,7 @@ body {
 }
 #bv-divider {
   width: 40px; height: 1px;
-  background: rgba(212,168,32,.55);
+  background: rgba(184,150,12,0.3);
   margin-bottom: 36px;
 }
 #bv-thought {
@@ -693,7 +691,7 @@ body {
 }
 .freq-text {
   font-family: var(--serif); font-size: 1.05rem;
-  line-height: 1.65; color: rgba(244,240,232,0.82);
+  line-height: 1.65; color: rgba(244,240,232,0.6);
 }
 .freq-text em { color: rgba(244,240,232,0.9); font-style: italic; }
 
@@ -717,7 +715,7 @@ body {
 .map-header { margin-bottom: 80px; }
 .map-header p {
   font-family: var(--serif); font-style: italic;
-  font-size: 1.1rem; color: rgba(244,240,232,0.60);
+  font-size: 1.1rem; color: rgba(244,240,232,0.35);
   max-width: 400px; margin-top: 16px;
 }
 
@@ -730,14 +728,14 @@ body {
   grid-template-columns: 120px 1fr;
   gap: 40px; align-items: start;
   padding: 32px 0;
-  border-top: 1px solid rgba(244,240,232,0.10);
+  border-top: 1px solid rgba(244,240,232,0.04);
   opacity: 0; transform: translateX(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .map-node.visible { opacity: 1; transform: none; }
 .map-node-time {
   font-family: var(--mono); font-size: 0.6rem;
-  letter-spacing: 0.2em; color: rgba(212,168,32,.65);
+  letter-spacing: 0.2em; color: rgba(184,150,12,0.4);
   text-transform: uppercase; padding-top: 4px;
 }
 .map-node-content {}
@@ -747,13 +745,13 @@ body {
 }
 .map-node-desc {
   font-family: var(--serif); font-size: 0.95rem;
-  color: rgba(244,240,232,0.70); line-height: 1.6;
+  color: rgba(244,240,232,0.45); line-height: 1.6;
 }
 .map-node.locked .map-node-title { opacity: 0.3; }
 .map-node.locked .map-node-desc { opacity: 0.2; }
 .map-node-redact {
   display: inline-block;
-  background: rgba(244,240,232,0.15);
+  background: rgba(244,240,232,0.08);
   color: transparent; user-select: none;
   border-radius: 2px;
 }
@@ -776,7 +774,7 @@ body {
 }
 .contact-big em {
   display: block; font-style: italic;
-  color: rgba(244,240,232,0.40); font-weight: 400;
+  color: rgba(244,240,232,0.2); font-weight: 400;
 }
 
 .contact-links {
@@ -786,13 +784,13 @@ body {
 .contact-link-item {
   display: flex; align-items: center; gap: 12px;
   padding: 20px 32px;
-  border: 1px solid rgba(244,240,232,0.14);
+  border: 1px solid rgba(244,240,232,0.07);
   text-decoration: none; color: inherit;
   transition: border-color 0.3s, background 0.3s;
   cursor: none;
 }
 .contact-link-item:hover {
-  border-color: rgba(212,168,32,.55);
+  border-color: rgba(184,150,12,0.3);
   background: rgba(184,150,12,0.03);
 }
 .cli-label {
@@ -802,7 +800,7 @@ body {
 }
 .cli-value {
   font-family: var(--mono); font-size: 0.75rem;
-  letter-spacing: 0.1em; color: rgba(244,240,232,0.82);
+  letter-spacing: 0.1em; color: rgba(244,240,232,0.6);
 }
 
 /* resume row */
@@ -813,19 +811,19 @@ body {
 .resume-label {
   font-family: var(--mono); font-size: 0.6rem;
   letter-spacing: 0.25em; text-transform: uppercase;
-  color: rgba(244,240,232,0.45);
+  color: rgba(244,240,232,0.25);
 }
 .resume-btn {
   font-family: var(--mono); font-size: 0.6rem;
   letter-spacing: 0.2em; text-transform: uppercase;
   padding: 10px 24px;
   border: 1px solid rgba(244,240,232,0.1);
-  background: none; color: rgba(244,240,232,0.75);
+  background: none; color: rgba(244,240,232,0.5);
   cursor: none; transition: all 0.2s; text-decoration: none;
   display: inline-block;
 }
 .resume-btn:hover {
-  border-color: rgba(212,168,32,.65);
+  border-color: rgba(184,150,12,0.4);
   color: var(--gold);
   background: rgba(184,150,12,0.04);
 }
@@ -846,7 +844,7 @@ body {
   font-family: var(--mono); font-size: 0.6rem;
   letter-spacing: 0.2em; text-transform: uppercase;
   background: none; border: 1px solid rgba(184,150,12,0.2);
-  color: rgba(212,168,32,.65); cursor: none;
+  color: rgba(184,150,12,0.4); cursor: none;
   padding: 10px 18px; transition: all 0.2s;
 }
 #terminal-btn:hover { border-color: var(--gold); color: var(--gold); }
@@ -866,9 +864,9 @@ body {
   scrollbar-width: thin; scrollbar-color: rgba(184,150,12,0.2) transparent;
   line-height: 1.8;
 }
-.term-line { color: rgba(244,240,232,0.70); }
+.term-line { color: rgba(244,240,232,0.45); }
 .term-line.gold { color: var(--gold); }
-.term-line.dim { color: rgba(244,240,232,0.40); }
+.term-line.dim { color: rgba(244,240,232,0.2); }
 .term-line.err { color: var(--rust); }
 .term-prompt {
   display: flex; align-items: center; gap: 8px;
@@ -911,44 +909,42 @@ body {
   #signal-left { padding: 60px 24px; }
 }
 
-    #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(184,150,12,0.2);overflow:hidden;}
-    #shelf-tube{position:absolute;top:0;left:60px;right:60px;height:3px;background:linear-gradient(90deg,transparent,rgba(235,225,185,.9) 20%,rgba(245,238,205,.98) 50%,rgba(235,225,185,.9) 80%,transparent);box-shadow:0 0 8px 3px rgba(220,200,140,.5),0 0 24px 8px rgba(190,165,100,.2);animation:flk 7s infinite;z-index:2;}
-    #shelf-cast{position:absolute;top:3px;left:0;right:0;height:100%;background:linear-gradient(to bottom,rgba(215,195,130,.18) 0%,rgba(190,165,100,.09) 30%,transparent 70%);animation:flk 7s infinite;pointer-events:none;z-index:1;}
-    #book-shelf{background:none!important;position:relative;z-index:1;}
-    @keyframes flk{0%,100%{opacity:1}2%{opacity:.2}3%{opacity:1}5%{opacity:.6}6%{opacity:1}31%{opacity:1}31.3%{opacity:0}31.7%{opacity:1}32%{opacity:.4}32.5%{opacity:1}56%{opacity:1}56.2%{opacity:.1}56.5%{opacity:1}56.8%{opacity:.5}57%{opacity:1}76%{opacity:1}76.2%{opacity:0}76.5%{opacity:.8}76.8%{opacity:0}77.2%{opacity:1}77.6%{opacity:.4}78%{opacity:1}}
+    #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(212,168,32,0.3);overflow:hidden;}
+    #shelf-tube{position:absolute;top:0;left:40px;right:40px;height:4px;background:linear-gradient(90deg,transparent,rgba(248,238,200,.92) 15%,rgba(255,250,220,1.0) 50%,rgba(248,238,200,.92) 85%,transparent);box-shadow:0 0 14px 5px rgba(235,215,155,.75),0 0 40px 14px rgba(210,180,110,.4);animation:flk 7s infinite;z-index:2;}
+    #shelf-cast{position:absolute;top:4px;left:0;right:0;height:100%;background:linear-gradient(to bottom,rgba(230,210,145,.28) 0%,rgba(205,178,112,.14) 25%,rgba(180,155,90,.05) 55%,transparent 75%);animation:flk 7s infinite;pointer-events:none;z-index:1;}
+    #book-shelf{background:none!important;position:relative;z-index:1;overflow:visible;cursor:none;}
+    @keyframes flk{0%,100%{opacity:1}2%{opacity:.15}3%{opacity:1}5%{opacity:.55}6%{opacity:1}31%{opacity:1}31.3%{opacity:0}31.7%{opacity:1}32%{opacity:.35}32.5%{opacity:1}56%{opacity:1}56.2%{opacity:.08}56.5%{opacity:1}56.8%{opacity:.45}57%{opacity:1}76%{opacity:1}76.2%{opacity:0}76.5%{opacity:.75}76.8%{opacity:0}77.2%{opacity:1}77.6%{opacity:.35}78%{opacity:1}}
     .shelf-book{flex-shrink:0;position:relative;cursor:none;perspective:600px;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);transform-origin:bottom center;}
-    .shelf-book:hover{transform:translateY(-18px) scale(1.03);}
-    .shelf-book:hover .book-spine{filter:brightness(1.25);}
+    .shelf-book:hover{transform:translateY(-18px) scale(1.04);}
+    .shelf-book:hover .book-spine{filter:brightness(1.4);}
     .book-3d{position:relative;transform-style:preserve-3d;transform:rotateX(14deg);}
-    .book-spine{width:36px;border-radius:1px 0 0 0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:filter 0.3s;box-shadow:inset -5px 0 10px rgba(0,0,0,.35),2px 0 5px rgba(0,0,0,.5);}
+    .book-spine{width:36px;border-radius:1px 0 0 0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:filter 0.3s;box-shadow:inset -4px 0 8px rgba(0,0,0,.2),2px 0 5px rgba(0,0,0,.3);}
     .book-top{position:absolute;top:0;left:0;width:36px;height:9px;transform-origin:top center;transform:rotateX(-90deg);background:repeating-linear-gradient(90deg,#e8e0d0 0px,#e8e0d0 1.5px,#c0b8a8 1.5px,#c0b8a8 2px);opacity:.85;}
-    .book-spine-text{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:90%;padding:8px 0;}
-    .book-spine-author{position:absolute;bottom:8px;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:.4rem;color:rgba(255,255,255,.28);letter-spacing:.1em;text-transform:uppercase;}
-    .shelf-globe{flex-shrink:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:130px;padding-bottom:6px;cursor:default;}
-    .globe-canvas-wrap{width:110px;height:110px;position:relative;}
+    .book-spine-text{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.95);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:90%;padding:8px 0;text-shadow:0 1px 3px rgba(0,0,0,.6);}
+    .book-spine-author{position:absolute;bottom:8px;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:.4rem;color:rgba(255,255,255,.65);letter-spacing:.1em;text-transform:uppercase;}
+    .shelf-globe{flex-shrink:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:220px;padding-bottom:6px;cursor:default;}
+    .globe-canvas-wrap{width:190px;height:190px;position:relative;}
     .globe-canvas-wrap canvas{border-radius:50%;cursor:grab;}
     .globe-canvas-wrap canvas:active{cursor:grabbing;}
-    .globe-stand{width:48px;height:14px;background:linear-gradient(to bottom,#5a4a3a,#2a1a0a);border-radius:3px;margin-top:4px;box-shadow:0 2px 6px rgba(0,0,0,.5);}
-    .globe-base{width:74px;height:9px;background:linear-gradient(to bottom,#3a2a1a,#1a0e04);border-radius:3px;box-shadow:0 3px 10px rgba(0,0,0,.6);}
+    .globe-stand{width:80px;height:20px;background:linear-gradient(to bottom,#5a4a3a,#2a1a0a);border-radius:3px;margin-top:6px;box-shadow:0 2px 8px rgba(0,0,0,.5);}
+    .globe-base{width:120px;height:12px;background:linear-gradient(to bottom,#3a2a1a,#1a0e04);border-radius:3px;box-shadow:0 3px 12px rgba(0,0,0,.6);}
 
     #atlas-briefing{position:fixed;inset:0;z-index:9800;background:#b8a882;transform:translateY(100%);transition:transform 0.6s cubic-bezier(0.77,0,0.18,1);overflow-y:auto;overflow-x:hidden;font-family:'Courier New',monospace;user-select:none;-webkit-user-select:none;}
     #atlas-briefing.open{transform:translateY(0);}
     #ab-close{position:fixed;top:18px;right:24px;z-index:9810;font-family:'Courier New',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(30,15,5,.45);background:none;border:1px solid rgba(30,15,5,.2);padding:6px 14px;cursor:pointer;}
-    #ab-close:hover{color:#1a0a02;border-color:rgba(30,15,5,.5);}
     #ab-doc{max-width:760px;margin:0 auto;padding:60px 72px 100px;background:#ede4cc;box-shadow:0 0 80px rgba(0,0,0,.7);min-height:100vh;position:relative;overflow:visible;}
     #ab-doc::before,#ab-doc::after{content:'ATLAS-BLACK // COMPARTMENTED // NEED-TO-KNOW';display:block;text-align:center;font-family:'Courier New',monospace;font-size:.6rem;letter-spacing:.2em;font-weight:bold;color:#8b0000;padding:5px 0;border-top:2px solid #8b0000;border-bottom:2px solid #8b0000;}
     #ab-doc::before{margin-bottom:36px;}#ab-doc::after{margin-top:36px;}
     .ab-corp-header{text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(40,20,5,.15);}
     .ab-corp-name{font-size:1.1rem;font-weight:900;letter-spacing:.3em;color:#140e04;text-transform:uppercase;margin-bottom:2px;}
     .ab-corp-div{font-size:.6rem;letter-spacing:.22em;color:rgba(30,15,5,.45);text-transform:uppercase;}
-    .ab-corp-sub{font-size:.52rem;letter-spacing:.15em;color:rgba(30,15,5,.3);text-transform:uppercase;margin-top:3px;}
     .ab-stamp-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;}
     .ab-ts-stamp{display:inline-block;font-size:1.1rem;font-weight:bold;letter-spacing:.2em;color:#8b0000;border:3px solid #8b0000;padding:3px 14px;transform:rotate(-2deg);opacity:.85;}
     .ab-doc-ref{font-size:.57rem;color:rgba(30,15,5,.45);line-height:2;text-align:right;}
     .ab-doc-title{text-align:center;margin-bottom:28px;}
     .ab-doc-title h1{font-size:.92rem;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#140e04;margin-bottom:6px;text-decoration:underline;}
     .ab-doc-title p{font-size:.6rem;color:rgba(30,15,5,.45);margin:3px 0;}
-    .ab-meta-block{font-size:.62rem;color:#1a0e04;line-height:1.95;margin-bottom:28px;padding:14px 18px;border:1px solid rgba(60,35,10,.18);background:rgba(140,100,40,.04);}
+    .ab-meta-block{font-size:.62rem;color:#1a0e04;line-height:1.95;margin-bottom:28px;padding:14px 18px;border:1px solid rgba(60,35,10,.18);}
     .ab-meta-block table{width:100%;border-collapse:collapse;}.ab-meta-block td{padding:1px 0;vertical-align:top;}
     .ab-meta-block td:first-child{width:160px;color:rgba(30,15,5,.4);text-transform:uppercase;font-size:.56rem;}
     .ab-section{margin-bottom:30px;}.ab-section-num{font-size:.56rem;font-weight:bold;color:rgba(30,15,5,.35);text-transform:uppercase;margin-bottom:3px;}
@@ -960,22 +956,10 @@ body {
     .ab-program-table{width:100%;border-collapse:collapse;font-size:.61rem;margin:14px 0;}
     .ab-program-table th{background:rgba(30,15,5,.07);padding:5px 8px;text-align:left;font-weight:bold;text-transform:uppercase;color:#140e04;border:1px solid rgba(60,35,10,.2);font-size:.55rem;}
     .ab-program-table td{padding:6px 8px;color:#1a0e04;border:1px solid rgba(60,35,10,.12);line-height:1.5;vertical-align:top;}
-    .ab-program-table tr:nth-child(even) td{background:rgba(140,100,40,.03);}
     .ab-status-active{color:#1a4a1a;font-weight:bold;}.ab-status-dev{color:#4a3a0a;}.ab-status-class{color:#8b0000;}
-    .ab-annotation{font-size:.61rem;color:#1a3a6a;border-left:2px solid #1a3a6a;padding:7px 11px;margin:14px 0;background:rgba(26,58,106,.03);font-style:italic;}
-    .ab-annotation::before{content:'NOTE: ';font-weight:bold;font-style:normal;}
-    .ab-signature-block{margin-top:36px;padding-top:18px;border-top:1px solid rgba(60,35,10,.18);font-size:.61rem;color:#1a0e04;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-    .ab-sig-field{border-bottom:1px solid rgba(30,15,5,.25);padding-bottom:3px;margin-bottom:4px;min-height:26px;}
-    .ab-sig-label{font-size:.52rem;color:rgba(30,15,5,.38);text-transform:uppercase;}
     .ab-footer-strip{text-align:center;margin-top:28px;font-size:.52rem;color:rgba(30,15,5,.3);text-transform:uppercase;line-height:1.8;}
     #ab-watermark{position:fixed;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;z-index:9801;}
     #ab-watermark span{font-size:9vw;font-weight:900;letter-spacing:.25em;color:rgba(139,0,0,.04);transform:rotate(-35deg);user-select:none;white-space:nowrap;}
-    #atlas-auth{position:fixed;inset:0;z-index:9850;background:#020402;display:none;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:.7rem;letter-spacing:.15em;}
-    #atlas-auth.active{display:flex;}#auth-lines{width:480px;line-height:2.2;}
-    .auth-line{color:rgba(212,168,32,.75);opacity:0;transition:opacity .3s;}.auth-line.show{opacity:1;}
-    .auth-line.ok::before{content:'[OK] ';color:#4a9a4a;}.auth-line.err-t::before{content:'[!!] ';color:#cc2200;}.auth-line.sys{color:rgba(244,240,232,.45);}
-    #auth-bar-wrap{width:480px;margin-top:24px;height:2px;background:rgba(184,150,12,.1);}
-    #auth-bar{height:2px;background:var(--gold);width:0%;box-shadow:0 0 8px rgba(212,168,32,.82);}
     #ss-warning{position:fixed;inset:0;z-index:99999;background:#0a0a0a;display:none;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;}
     #ss-warning.show{display:flex;}
     #ss-warning .ss-icon{font-size:3rem;color:#8b0000;margin-bottom:16px;}
@@ -1040,7 +1024,7 @@ body {
         yet.
       </h1>
       <p class="signal-manifesto">
-        ECE graduate. Firmware writer. Obsessive. Working on autonomous systems, edge AI, and a defense tech company that hasn't been built yet — somewhere between Hyderabad and the future.
+        I like the smell of rain on concrete. Long conversations that go nowhere and everywhere. My mother’s cooking. Friends who argue back. The particular silence of 2am when it’s just you and an idea.<br><br>I also write firmware and think about autonomous systems. But that’s not all I am.<br><br>This is the part where I try to show you the rest.
       </p>
       <div class="signal-coords">
         <span>17.3850°N 78.4867°E</span>
@@ -1053,10 +1037,8 @@ body {
       <canvas id="terrain-canvas"></canvas>
       <div class="signal-status-panel">
         <div class="status-line">SYSTEM <span class="val">ONLINE</span></div>
-        <div class="status-line">UPTIME <span class="val" id="uptime-val">0d 0h</span></div>
-        <div class="status-line">FOCUS <span class="val">GATE CSE + EMBEDDED</span></div>
+        <div class="status-line">ALIVE <span class="val" id="uptime-val">0d 0h</span></div>
         <div class="status-line">FRIDAY <span class="val">ACTIVE</span></div>
-        <div class="status-line">ATLAS <span class="val">CLASSIFIED</span></div>
       </div>
     </div>
     <div class="signal-scroll-hint">
@@ -1115,7 +1097,7 @@ body {
         <div class="log-body">Graduated. Started Project-IRIS — a local AI system running Mistral 7B via Ollama on an RTX 3050. YOLOv8 for vision. ESP32-CAM with pan-tilt servos. Started calling it FRIDAY. Started thinking about what it could grow into.</div>
       </div>
 
-      <div class="log-entry active-now" data-year="NOW">
+      <div class="log-entry" data-year="NOW">
         <div class="log-year">NOW</div>
         <div class="log-tag">Present</div>
         <div class="log-title">In the middle of everything</div>
@@ -1550,12 +1532,13 @@ function initMapCanvas() {
 // ══════════════════════════════════════════════════════
 function initUptime() {
   const el = document.getElementById('uptime-val');
-  const start = new Date('2024-06-01');
+  const start = new Date('2002-04-19T00:00:00');
   function update() {
     const diff = Date.now() - start;
     const days = Math.floor(diff / 86400000);
     const hours = Math.floor((diff % 86400000) / 3600000);
-    el.textContent = `${days}d ${hours}h`;
+    const yrs=Math.floor(days/365);const rd=days%365;
+    el.textContent = `${yrs}y ${rd}d ${hours}h`;
   }
   update(); setInterval(update, 60000);
 }
@@ -1579,172 +1562,82 @@ function initLabHover() {
 // BOOK SHELF
 // ══════════════════════════════════════════════════════
 const BOOKS = [
-  { title: 'Meditations', author: 'Marcus Aurelius', isbn: '9780140449334', color: '#5c4a2a', accent: '#d4aa60', thought: 'A Roman emperor writing to himself — never meant to be published. The firmware of the mind. Stoicism isn\'t about suppressing emotion. It\'s about not being controlled by what you can\'t control.', tags: ['Philosophy','Stoicism','Self-discipline'], h: 280 },
-  { title: 'The Feynman Lectures on Physics', author: 'Richard P. Feynman', isbn: '9780465023820', color: '#1e3a5f', accent: '#7eb8d4', thought: 'The best proof that understanding and wonder are the same thing. Feynman makes you feel like physics is a conversation, not a lecture. The chapter on electromagnetism alone changed how I see everything.', tags: ['Physics','First principles','Curiosity'], h: 310 },
-  { title: 'Boyd: The Fighter Pilot Who Changed the Art of War', author: 'Robert Coram', isbn: '9780316796880', color: '#2a3d2a', accent: '#7aaa6a', thought: 'The OODA loop is everywhere once you see it. Boyd was obsessed, difficult, and almost always right. One man against an institution. The closest real-world parallel to building something nobody asked for.', tags: ['Strategy','Military','Systems thinking'], h: 295 },
-  { title: 'The Art of War', author: 'Sun Tzu', isbn: '9781599869773', color: '#6b2020', accent: '#c97070', thought: 'Not about war. About information asymmetry, timing, and why winning without fighting is the highest form. More applicable to engineering decisions than most engineering books.', tags: ['Strategy','Philosophy','Conflict'], h: 250 },
-  { title: 'Surely You\'re Joking, Mr. Feynman!', author: 'Richard P. Feynman', isbn: '9780393316049', color: '#4a3d0a', accent: '#c8a030', thought: 'A reminder that curiosity is a lifestyle, not a trait. He learned to pick locks, paint, drum, crack safes — not to be interesting, but because everything was interesting. That\'s the model.', tags: ['Curiosity','Autobiography','Science'], h: 288 },
-  { title: 'Structures: Why Things Don\'t Fall Down', author: 'J.E. Gordon', isbn: '9780306812835', color: '#3d2a4a', accent: '#8a6aaa', thought: 'The most readable engineering book ever written. Gordon explains why Roman arches work, why ships don\'t sink, why bones are shaped the way they are — and makes you feel like you\'ve been missing something obvious your whole life.', tags: ['Engineering','Materials','Design'], h: 302 },
-  { title: 'A Brief History of Time', author: 'Stephen Hawking', isbn: '9780553380163', color: '#1a1a3a', accent: '#6a6ac0', thought: 'I read this before I understood half of it. Then I read it again. The section on black holes and entropy is still the most humbling 20 pages I\'ve ever read. We are genuinely tiny and temporary and that\'s fine.', tags: ['Cosmology','Physics','Existence'], h: 276 },
-  { title: 'The Innovators', author: 'Walter Isaacson', isbn: '9781476708690', color: '#2a2a4a', accent: '#5a8aaa', thought: 'The real history of computing — not the myths. What strikes you is how collaborative it actually was. Ada Lovelace, Turing, Shannon, von Neumann — none of them worked in isolation. Ideas compound.', tags: ['History','Technology','Computing'], h: 320 },
-  { title: 'Elon Musk', author: 'Walter Isaacson', isbn: '9781982181284', color: '#1c2a3a', accent: '#4a9aaa', thought: "Absolute refusal to accept something is impossible.", tags: ['Biography','Technology','Ambition'], h: 308 },
-  { title: 'Steve Jobs', author: 'Walter Isaacson', isbn: '9781451648539', color: '#1a1a1a', accent: '#aaaaaa', thought: "Reality distortion field is real.", tags: ['Biography','Design','Leadership'], h: 318 },
-  { title: 'Zero to One', author: 'Peter Thiel', isbn: '9780804139892', color: '#0a1a0a', accent: '#50a050', thought: "Competition is for losers.", tags: ['Startups','Strategy','Thinking'], h: 268 },
-  { title: 'The Lean Startup', author: 'Eric Ries', isbn: '9780307887894', color: '#1a2a1a', accent: '#6aaa4a', thought: "Build-measure-learn.", tags: ['Startups','Product','Methodology'], h: 282 },
-  { title: 'The Martian', author: 'Andy Weir', isbn: '9780553418026', color: '#3a1a00', accent: '#cc6620', thought: "Watney does not panic.", tags: ['Fiction','Engineering','Survival'], h: 290 },
-  { title: "Ender's Game", author: 'Orson Scott Card', isbn: '9780812550702', color: '#0a0a2a', accent: '#4a4acc', thought: "Strategy and what it costs to be exceptional.", tags: ['Fiction','Strategy','Leadership'], h: 285 },
-  { title: 'The Selfish Gene', author: 'Richard Dawkins', isbn: '9780198788607', color: '#1a2a1a', accent: '#5a8a3a', thought: "Dawkins hands you a lens you can never put down.", tags: ['Biology','Evolution','Systems thinking'], h: 292 },
-  { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman', isbn: '9780374533557', color: '#2a1a2a', accent: '#9a5a9a', thought: "System 1 and System 2 are the most useful mental models.", tags: ['Psychology','Decision-making','Cognition'], h: 298 },
-  { title: 'Dune', author: 'Frank Herbert', isbn: '9780441013593', color: '#3a2a0a', accent: '#c8a020', thought: "Herbert built a universe with more internal logic than most engineering specs.", tags: ['Fiction','Sci-Fi','Politics'], h: 315 },
-  { title: 'Atomic Habits', author: 'James Clear', isbn: '9780735211292', color: '#1a1a2a', accent: '#6a8aaa', thought: "Systems over goals. Marginal gains are real.", tags: ['Self-improvement','Psychology','Systems'], h: 272 },
-  { title: 'The Hard Thing About Hard Things', author: 'Ben Horowitz', isbn: '9780062273208', color: '#2a1a0a', accent: '#aa6a20', thought: "No recipe for the hard stuff. Everybody bleeds.", tags: ['Startups','Leadership','Business'], h: 288 },
-  { title: 'The Pragmatic Programmer', author: 'David Thomas', isbn: '9780135957059', color: '#0a1a0a', accent: '#4a8a4a', thought: "Think about your work. Almost nobody does.", tags: ['Programming','Engineering','Craft'], h: 295 },
-  { title: 'Clean Code', author: 'Robert C. Martin', isbn: '9780132350884', color: '#0a0a1a', accent: '#4a4a8a', thought: "Code is read far more than it is written.", tags: ['Programming','Engineering','Craft'], h: 278 },
+  { title: 'Meditations', author: 'Marcus Aurelius', isbn: '9780140449334', color: '#a93226', accent: '#d4aa60', thought: 'A Roman emperor writing to himself — never meant to be published. The firmware of the mind. Stoicism isn\'t about suppressing emotion. It\'s about not being controlled by what you can\'t control.', tags: ['Philosophy','Stoicism','Self-discipline'], h: 280 },
+  { title: 'The Feynman Lectures on Physics', author: 'Richard P. Feynman', isbn: '9780465023820', color: '#ca6f1e', accent: '#ffd166', thought: 'The best proof that understanding and wonder are the same thing. Feynman makes you feel like physics is a conversation, not a lecture. The chapter on electromagnetism alone changed how I see everything.', tags: ['Physics','First principles','Curiosity'], h: 310 },
+  { title: 'Boyd: The Fighter Pilot Who Changed the Art of War', author: 'Robert Coram', isbn: '9780316796880', color: '#0e8272', accent: '#1abc9c', thought: 'The OODA loop is everywhere once you see it. Boyd was obsessed, difficult, and almost always right. One man against an institution. The closest real-world parallel to building something nobody asked for.', tags: ['Strategy','Military','Systems thinking'], h: 295 },
+  { title: 'The Art of War', author: 'Sun Tzu', isbn: '9781599869773', color: '#76359a', accent: '#c39bd3', thought: 'Not about war. About information asymmetry, timing, and why winning without fighting is the highest form. More applicable to engineering decisions than most engineering books.', tags: ['Strategy','Philosophy','Conflict'], h: 250 },
+  { title: 'Surely You\'re Joking, Mr. Feynman!', author: 'Richard P. Feynman', isbn: '9780393316049', color: '#d4890a', accent: '#ffe066', thought: 'A reminder that curiosity is a lifestyle, not a trait. He learned to pick locks, paint, drum, crack safes — not to be interesting, but because everything was interesting. That\'s the model.', tags: ['Curiosity','Autobiography','Science'], h: 288 },
+  { title: 'Structures: Why Things Don\'t Fall Down', author: 'J.E. Gordon', isbn: '9780306812835', color: '#1f6fa0', accent: '#74b9ff', thought: 'The most readable engineering book ever written. Gordon explains why Roman arches work, why ships don\'t sink, why bones are shaped the way they are — and makes you feel like you\'ve been missing something obvious your whole life.', tags: ['Engineering','Materials','Design'], h: 302 },
+  { title: 'A Brief History of Time', author: 'Stephen Hawking', isbn: '9780553380163', color: '#cb4335', accent: '#ff7675', thought: 'I read this before I understood half of it. Then I read it again. The section on black holes and entropy is still the most humbling 20 pages I\'ve ever read. We are genuinely tiny and temporary and that\'s fine.', tags: ['Cosmology','Physics','Existence'], h: 276 },
+  { title: 'The Innovators', author: 'Walter Isaacson', isbn: '9781476708690', color: '#2a2a4a', accent: '#5a8aaa', thought: 'The real history of computing.', tags: ['History','Technology','Computing'], h: 320 },
+  { title: 'Elon Musk', author: 'Walter Isaacson', isbn: '9781982181284', color: '#ba4a00', accent: '#4a9aaa', thought: "Absolute refusal to accept something is impossible.", tags: ['Biography','Technology','Ambition'], h: 308 },
+  { title: 'Steve Jobs', author: 'Walter Isaacson', isbn: '9781451648539', color: '#2c3e50', accent: '#aaaaaa', thought: "Reality distortion field is real.", tags: ['Biography','Design','Leadership'], h: 318 },
+  { title: 'Zero to One', author: 'Peter Thiel', isbn: '9780804139892', color: '#5b4fcf', accent: '#50a050', thought: "Competition is for losers.", tags: ['Startups','Strategy','Thinking'], h: 268 },
+  { title: 'The Lean Startup', author: 'Eric Ries', isbn: '9780307887894', color: '#00957a', accent: '#6aaa4a', thought: "Build-measure-learn.", tags: ['Startups','Product','Methodology'], h: 282 },
+  { title: 'The Martian', author: 'Andy Weir', isbn: '9780553418026', color: '#c75f42', accent: '#cc6620', thought: "Watney does not panic.", tags: ['Fiction','Engineering','Survival'], h: 290 },
+  { title: "Ender's Game", author: 'Orson Scott Card', isbn: '9780812550702', color: '#0873c4', accent: '#4a4acc', thought: "Strategy and what it costs to be exceptional.", tags: ['Fiction','Strategy','Leadership'], h: 285 },
+  { title: 'The Selfish Gene', author: 'Richard Dawkins', isbn: '9780198788607', color: '#7daa1e', accent: '#5a8a3a', thought: "Dawkins hands you a lens you can never put down.", tags: ['Biology','Evolution','Systems thinking'], h: 292 },
+  { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman', isbn: '9780374533557', color: '#e05c8c', accent: '#9a5a9a', thought: "System 1 and System 2 are the most useful mental models.", tags: ['Psychology','Decision-making','Cognition'], h: 298 },
+  { title: 'Dune', author: 'Frank Herbert', isbn: '9780441013593', color: '#d4a918', accent: '#c8a020', thought: "Herbert built a universe with more internal logic than most engineering specs.", tags: ['Fiction','Sci-Fi','Politics'], h: 315 },
+  { title: 'Atomic Habits', author: 'James Clear', isbn: '9780735211292', color: '#0096b7', accent: '#6a8aaa', thought: "Systems over goals.", tags: ['Self-improvement','Psychology','Systems'], h: 272 },
+  { title: 'The Hard Thing About Hard Things', author: 'Ben Horowitz', isbn: '9780062273208', color: '#b92929', accent: '#aa6a20', thought: "No recipe for the hard stuff. Everybody bleeds.", tags: ['Startups','Leadership','Business'], h: 288 },
+  { title: 'The Pragmatic Programmer', author: 'David Thomas', isbn: '9780135957059', color: '#00756a', accent: '#4a8a4a', thought: "Think about your work.", tags: ['Programming','Engineering','Craft'], h: 295 },
+  { title: 'Clean Code', author: 'Robert C. Martin', isbn: '9780132350884', color: '#4a29b8', accent: '#4a4a8a', thought: "Code is read far more than it is written.", tags: ['Programming','Engineering','Craft'], h: 278 },
 ];
 
 function initBookShelf() {
   const shelf = document.getElementById('book-shelf');
   function makeGlobe() {
-    const g = document.createElement('div');
-    g.className = 'shelf-globe';
-    const wrap = document.createElement('div');
-    wrap.className = 'globe-canvas-wrap';
-    const cv = document.createElement('canvas');
-    cv.width = 110; cv.height = 110;
+    const g=document.createElement('div');g.className='shelf-globe';
+    const wrap=document.createElement('div');wrap.className='globe-canvas-wrap';
+    const cv=document.createElement('canvas');cv.width=190;cv.height=190;
     wrap.appendChild(cv);
-    const stand = document.createElement('div'); stand.className = 'globe-stand';
-    const base = document.createElement('div'); base.className = 'globe-base';
-    g.appendChild(wrap); g.appendChild(stand); g.appendChild(base);
-
-    // Three.js globe
-    const scene = new THREE.Scene();
-    const cam = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    cam.position.z = 2.2;
-    const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
-    renderer.setSize(110, 110);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Lights
-    const amb = new THREE.AmbientLight(0xffffff, 0.3);
-    scene.add(amb);
-    const sun = new THREE.DirectionalLight(0xffd090, 1.4);
-    sun.position.set(3, 2, 3);
-    scene.add(sun);
-
-    // Globe sphere
-    const geo = new THREE.SphereGeometry(1, 64, 64);
-
-    // Build texture on canvas
-    const tc = document.createElement('canvas');
-    tc.width = 512; tc.height = 256;
-    const tx = tc.getContext('2d');
-
-    // Ocean
-    tx.fillStyle = '#1a3a5c';
-    tx.fillRect(0, 0, 512, 256);
-
-    // Simple continent blobs (stylised)
-    tx.fillStyle = '#2d6a3f';
-    const land = [
-      // North America
-      [60,60,90,80],[80,80,70,90],[90,100,60,80],
-      // South America
-      [100,130,50,60],[110,160,40,55],[105,185,35,45],
-      // Europe
-      [220,55,50,40],[235,70,40,35],[225,80,45,30],
-      // Africa
-      [225,100,55,45],[230,130,60,50],[235,155,50,45],[220,175,40,35],
-      // Asia
-      [270,50,130,60],[290,90,110,55],[310,120,80,50],[340,80,70,45],
-      // Australia
-      [360,160,60,40],[370,175,50,35],
-      // Antarctica hint
-      [80,230,350,20],
-    ];
-    land.forEach(([x,y,w,h]) => {
-      tx.beginPath();
-      tx.ellipse(x,y,w/2,h/2,0,0,Math.PI*2);
-      tx.fill();
-    });
-
-    // Latitude lines
-    tx.strokeStyle = 'rgba(255,255,255,0.07)';
-    tx.lineWidth = 0.8;
-    for(let lat=-75;lat<=75;lat+=30){
-      const py = (lat+90)/180*256;
-      tx.beginPath(); tx.moveTo(0,py); tx.lineTo(512,py); tx.stroke();
-    }
-    // Longitude lines
-    for(let lon=0;lon<360;lon+=30){
-      const px = lon/360*512;
-      tx.beginPath(); tx.moveTo(px,0); tx.lineTo(px,256); tx.stroke();
-    }
-
-    const tex = new THREE.CanvasTexture(tc);
-    const mat = new THREE.MeshPhongMaterial({ map: tex, specular: new THREE.Color(0x224466), shininess: 18 });
-    const mesh = new THREE.Mesh(geo, mat);
-    scene.add(mesh);
-
-    // Atmosphere glow
-    const atmGeo = new THREE.SphereGeometry(1.04, 32, 32);
-    const atmMat = new THREE.MeshPhongMaterial({
-      color: 0x4488cc, transparent: true, opacity: 0.12, side: THREE.FrontSide
-    });
-    scene.add(new THREE.Mesh(atmGeo, atmMat));
-
-    // Drag to spin
-    let dragging=false, lastX=0, lastY=0, rotX=0.3, rotY=0, velX=0, velY=0.003;
-    cv.addEventListener('mousedown', e=>{ dragging=true; lastX=e.clientX; lastY=e.clientY; velX=0; velY=0; e.stopPropagation(); });
-    window.addEventListener('mousemove', e=>{
-      if(!dragging) return;
-      velY=(e.clientX-lastX)*0.008; velX=(e.clientY-lastY)*0.008;
-      rotY+=velY; rotX+=velX;
-      lastX=e.clientX; lastY=e.clientY;
-    });
-    window.addEventListener('mouseup', ()=>{ dragging=false; });
-
-    // Touch support
-    cv.addEventListener('touchstart', e=>{ dragging=true; lastX=e.touches[0].clientX; lastY=e.touches[0].clientY; velX=0; velY=0; e.stopPropagation(); },{passive:true});
-    cv.addEventListener('touchmove', e=>{
-      if(!dragging) return;
-      velY=(e.touches[0].clientX-lastX)*0.008; velX=(e.touches[0].clientY-lastY)*0.008;
-      rotY+=velY; rotX+=velX; lastX=e.touches[0].clientX; lastY=e.touches[0].clientY;
-    },{passive:true});
-    cv.addEventListener('touchend', ()=>{ dragging=false; },{passive:true});
-
-    (function animate(){
-      requestAnimationFrame(animate);
-      if(!dragging){ rotY+=velY; velY*=0.97; }
-      rotX=Math.max(-1.2,Math.min(1.2,rotX));
-      mesh.rotation.y=rotY; mesh.rotation.x=rotX;
-      renderer.render(scene,cam);
-    })();
+    const stand=document.createElement('div');stand.className='globe-stand';
+    const base=document.createElement('div');base.className='globe-base';
+    g.appendChild(wrap);g.appendChild(stand);g.appendChild(base);
+    const scene=new THREE.Scene();
+    const cam=new THREE.PerspectiveCamera(45,1,0.1,100);cam.position.z=2.2;
+    const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+    renderer.setSize(190,190);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    scene.add(new THREE.AmbientLight(0xffffff,0.6));
+    const sun=new THREE.DirectionalLight(0xffeedd,1.6);sun.position.set(3,2,4);scene.add(sun);
+    const fill=new THREE.DirectionalLight(0x88aaff,0.4);fill.position.set(-3,1,1);scene.add(fill);
+    const tc=document.createElement('canvas');tc.width=512;tc.height=256;
+    const tx=tc.getContext('2d');
+    tx.fillStyle='#1155aa';tx.fillRect(0,0,512,256);
+    tx.fillStyle='#3d9e5a';
+    [[60,60,90,80],[80,80,70,90],[90,100,60,80],[100,130,50,60],[110,160,40,55],[105,185,35,45],[220,55,50,40],[235,70,40,35],[225,80,45,30],[225,100,55,45],[230,130,60,50],[235,155,50,45],[220,175,40,35],[270,50,130,60],[290,90,110,55],[310,120,80,50],[340,80,70,45],[360,160,60,40],[370,175,50,35],[80,230,350,20]].forEach(([x,y,w,h])=>{tx.beginPath();tx.ellipse(x,y,w/2,h/2,0,0,Math.PI*2);tx.fill();});
+    tx.strokeStyle='rgba(255,255,255,0.12)';tx.lineWidth=1;
+    for(let lat=-75;lat<=75;lat+=30){const py=(lat+90)/180*256;tx.beginPath();tx.moveTo(0,py);tx.lineTo(512,py);tx.stroke();}
+    for(let lon=0;lon<360;lon+=30){const px=lon/360*512;tx.beginPath();tx.moveTo(px,0);tx.lineTo(px,256);tx.stroke();}
+    const tex=new THREE.CanvasTexture(tc);
+    const mat=new THREE.MeshPhongMaterial({map:tex,specular:new THREE.Color(0x112233),shininess:10});
+    const mesh=new THREE.Mesh(new THREE.SphereGeometry(1,64,64),mat);scene.add(mesh);
+    scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.04,32,32),new THREE.MeshPhongMaterial({color:0x4488cc,transparent:true,opacity:0.08,side:THREE.FrontSide})));
+    let dragging=false,lastX=0,lastY=0,rotX=0.3,rotY=0,velY=0.004;
+    cv.addEventListener('mousedown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;velY=0;e.stopPropagation();});
+    window.addEventListener('mousemove',e=>{if(!dragging)return;velY=(e.clientX-lastX)*0.008;rotY+=velY;rotX+=(e.clientY-lastY)*0.008;lastX=e.clientX;lastY=e.clientY;});
+    window.addEventListener('mouseup',()=>{dragging=false;});
+    (function anim(){requestAnimationFrame(anim);if(!dragging){rotY+=velY;velY*=0.97;}rotX=Math.max(-1.2,Math.min(1.2,rotX));mesh.rotation.y=rotY;mesh.rotation.x=rotX;renderer.render(scene,cam);})();
     return g;
   }
+
   BOOKS.forEach((book, i) => {
-    if(i === 10) shelf.appendChild(makeGlobe());
-    const wrap = document.createElement('div');
-    wrap.className = 'shelf-book'; wrap.style.height = book.h + 'px';
-    const b3 = document.createElement('div');
-    b3.className = 'book-3d'; b3.style.height = book.h + 'px';
-    const spine = document.createElement('div');
-    spine.className = 'book-spine';
-    spine.style.cssText = `height:${book.h}px;background:linear-gradient(170deg,color-mix(in srgb,${book.color} 85%,#fff) 0%,${book.color} 40%,color-mix(in srgb,${book.color} 55%,#000) 100%);border-left:3px solid ${book.accent};`;
-    const top = document.createElement('div'); top.className = 'book-top';
-    const txt = document.createElement('div'); txt.className = 'book-spine-text'; txt.textContent = book.title;
-    const auth = document.createElement('div'); auth.className = 'book-spine-author'; auth.textContent = book.author.split(' ').pop();
-    spine.appendChild(txt); spine.appendChild(auth);
-    b3.appendChild(spine); b3.appendChild(top); wrap.appendChild(b3);
-    wrap.addEventListener('click', () => openBookViewer(i));
+    if(i===10) shelf.appendChild(makeGlobe());
+    const wrap=document.createElement('div');wrap.className='shelf-book';wrap.style.height=book.h+'px';
+    const b3=document.createElement('div');b3.className='book-3d';b3.style.height=book.h+'px';
+    const spine=document.createElement('div');spine.className='book-spine';
+    spine.style.cssText=`height:${book.h}px;background:linear-gradient(170deg,color-mix(in srgb,${book.color} 70%,#fff) 0%,${book.color} 60%,color-mix(in srgb,${book.color} 80%,#000) 100%);border-left:2px solid ${book.accent};`;
+    const top=document.createElement('div');top.className='book-top';
+    const txt=document.createElement('div');txt.className='book-spine-text';txt.textContent=book.title;
+    const auth=document.createElement('div');auth.className='book-spine-author';auth.textContent=book.author.split(' ').pop();
+    spine.appendChild(txt);spine.appendChild(auth);b3.appendChild(spine);b3.appendChild(top);wrap.appendChild(b3);
+    wrap.addEventListener('click',()=>openBookViewer(i));
     shelf.appendChild(wrap);
   });
 
   // drag to scroll
-  let isDragging=false,startX=0,startY=0,scrollStart=0,lockAxis=null;
-  shelf.addEventListener('mousedown',e=>{isDragging=true;startX=e.clientX;startY=e.clientY;scrollStart=shelf.scrollLeft;lockAxis=null;});
-  window.addEventListener('mousemove',e=>{if(!isDragging)return;const dx=e.clientX-startX,dy=e.clientY-startY;if(!lockAxis)lockAxis=Math.abs(dx)>Math.abs(dy)?'x':'y';if(lockAxis==='x'){e.preventDefault();shelf.scrollLeft=scrollStart-dx;}});
-  window.addEventListener('mouseup',()=>{isDragging=false;lockAxis=null;});
-  shelf.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();window.scrollBy({top:e.deltaY,behavior:'auto'});}},{passive:false});
+  // shelf is static — no drag scroll
 }
 
 // ── Book 3D Viewer ──
@@ -1778,37 +1671,47 @@ function openBookViewer(idx) {
   bvScene = new THREE.Scene();
 
   // book mesh
-  function makeFaceTex(face) {
-    const c = document.createElement('canvas');
-    c.width = 256; c.height = face === 'cover' ? 384 : (face === 'spine' ? 64 : 256);
-    const x = c.getContext('2d');
-    x.fillStyle = book.color; x.fillRect(0,0,c.width,c.height);
-    const g = x.createLinearGradient(0,0,c.width,c.height);
-    g.addColorStop(0,'rgba(255,255,255,0.07)'); g.addColorStop(1,'rgba(0,0,0,0.4)');
-    x.fillStyle = g; x.fillRect(0,0,c.width,c.height);
-    if (face === 'cover') {
-      x.fillStyle = book.accent; x.fillRect(0, c.height-6, c.width, 6);
-      x.fillStyle = '#fff'; x.font = 'bold 20px serif'; x.textAlign = 'center';
-      let y = 70, line = '', words = book.title.split(' ');
-      words.forEach(w => {
-        const t = line + w + ' ';
-        if (x.measureText(t).width > 210 && line) { x.fillText(line.trim(), 128, y); line = w+' '; y += 28; }
-        else line = t;
-      });
-      x.fillText(line.trim(), 128, y);
-      x.fillStyle = book.accent; x.font = '12px monospace';
-      x.fillText(book.author, 128, c.height - 22);
-    } else if (face === 'spine') {
-      x.fillStyle = book.accent; x.fillRect(0,0,c.width,3);
-    }
-    return new THREE.CanvasTexture(c);
+  function makeCanvasCover() {
+    const cv2=document.createElement('canvas');cv2.width=256;cv2.height=384;
+    const x=cv2.getContext('2d');
+    x.fillStyle=book.color;x.fillRect(0,0,256,384);
+    const g=x.createLinearGradient(0,0,256,384);
+    g.addColorStop(0,'rgba(255,255,255,0.15)');g.addColorStop(1,'rgba(0,0,0,0.45)');
+    x.fillStyle=g;x.fillRect(0,0,256,384);
+    x.fillStyle=book.accent;x.fillRect(0,360,256,24);
+    x.fillStyle='#ffffff';x.font='bold 22px Georgia,serif';x.textAlign='center';
+    x.shadowColor='rgba(0,0,0,0.6)';x.shadowBlur=6;
+    let y=80,line='',words=book.title.split(' ');
+    words.forEach(w=>{const t=line+w+' ';if(x.measureText(t).width>210&&line){x.fillText(line.trim(),128,y);line=w+' ';y+=30;}else line=t;});
+    x.fillText(line.trim(),128,y);
+    x.shadowBlur=0;x.fillStyle='rgba(255,255,255,0.85)';x.font='13px monospace';x.fillText(book.author,128,348);
+    return new THREE.CanvasTexture(cv2);
   }
-
+  function makeSpineTex(){
+    const cv2=document.createElement('canvas');cv2.width=64;cv2.height=384;
+    const x=cv2.getContext('2d');
+    x.fillStyle=book.color;x.fillRect(0,0,64,384);
+    x.fillStyle=book.accent;x.fillRect(0,0,64,4);
+    return new THREE.CanvasTexture(cv2);
+  }
   const W=1.4,H=2.0,D=0.2;
   const geo=new THREE.BoxGeometry(W,H,D);
-  const mats=[new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#222'),0.3)}),new THREE.MeshLambertMaterial({map:makeFaceTex('spine')}),new THREE.MeshLambertMaterial({color:0x111}),new THREE.MeshLambertMaterial({color:0x111}),new THREE.MeshLambertMaterial({map:makeFaceTex('cover')}),new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#000'),0.4)})];
-  bvMesh=new THREE.Mesh(geo,mats); bvScene.add(bvMesh);
-  if(book.isbn){const img=new Image();img.crossOrigin='anonymous';img.onload=()=>{const t=new THREE.Texture(img);t.needsUpdate=true;mats[4].map=t;mats[4].needsUpdate=true;};img.src=`https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`;}
+  const coverTex=makeCanvasCover();
+  const mats=[
+    new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#111'),0.3)}),
+    new THREE.MeshLambertMaterial({map:makeSpineTex()}),
+    new THREE.MeshLambertMaterial({color:0xf0ead8}),
+    new THREE.MeshLambertMaterial({color:0xf0ead8}),
+    new THREE.MeshLambertMaterial({map:coverTex}),
+    new THREE.MeshLambertMaterial({color:new THREE.Color(book.color).lerp(new THREE.Color('#000'),0.5)}),
+  ];
+  bvMesh=new THREE.Mesh(geo,mats);bvScene.add(bvMesh);
+  if(book.isbn){
+    const img=new Image();img.crossOrigin='anonymous';
+    img.onload=()=>{const cv2=document.createElement('canvas');cv2.width=img.naturalWidth||256;cv2.height=img.naturalHeight||384;cv2.getContext('2d').drawImage(img,0,0);mats[4].map=new THREE.CanvasTexture(cv2);mats[4].needsUpdate=true;coverTex.dispose();};
+    img.onerror=()=>{};
+    img.src='https://covers.openlibrary.org/b/isbn/'+book.isbn+'-L.jpg';
+  }
 
   bvPages = new THREE.Mesh(
     new THREE.BoxGeometry(W-0.05, H-0.05, D-0.02),
@@ -1867,15 +1770,9 @@ function initTerminal() {
       input.focus();
     }
   });
-
-  // Close on click outside
   document.addEventListener('click', (e) => {
-    if (!term.contains(e.target) && !btn.contains(e.target)) {
-      term.classList.remove('open');
-    }
+    if (!term.contains(e.target) && !btn.contains(e.target)) term.classList.remove('open');
   });
-
-  // Close on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') term.classList.remove('open');
   });
@@ -2031,34 +1928,22 @@ function initFooterTime() {
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('ab-close').addEventListener('click',function(){document.getElementById('atlas-briefing').classList.remove('open');});
-  document.getElementById('atlas-briefing').addEventListener('click',function(e){
-    if(e.target === this) this.classList.remove('open');
-  });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape') document.getElementById('atlas-briefing').classList.remove('open');
-  });
-  function showSSWarning(){if(!document.getElementById('atlas-briefing').classList.contains('open'))return;const w=document.getElementById('ss-warning');w.classList.add('show');setTimeout(()=>w.classList.remove('show'),3000);}
-  document.addEventListener('keyup',e=>{if(e.key==='PrintScreen'){navigator.clipboard.writeText('').catch(()=>{});showSSWarning();}});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)showSSWarning();});
-  document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.shiftKey&&(e.key==='S'||e.key==='s'||e.key==='3'||e.key==='4'))showSSWarning();});
+  document.getElementById('atlas-briefing').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('atlas-briefing').classList.remove('open');});
+  const w=document.getElementById('ss-warning');
+  document.addEventListener('keyup',e=>{if(e.key==='PrintScreen'&&document.getElementById('atlas-briefing').classList.contains('open')){w.classList.add('show');setTimeout(()=>w.classList.remove('show'),3000);}});
 });
 </script>
-<div id="ss-warning"><div class="ss-icon">⚠</div><div class="ss-title">Screenshot Detected</div><div class="ss-msg">This document is classified<br>ATLAS-BLACK // COMPARTMENTED<br>Unauthorised capture is a breach of confidentiality<br>and may result in immediate termination</div></div>
-<div id="atlas-auth"><div id="auth-lines"></div><div id="auth-bar-wrap"><div id="auth-bar"></div></div></div>
+<div id="ss-warning"><div class="ss-icon">&#9888;</div><div class="ss-title">Screenshot Detected</div><div class="ss-msg">ATLAS-BLACK // COMPARTMENTED<br>Unauthorised capture noted.</div></div>
 <div id="atlas-briefing"><div id="ab-watermark"><span>ATLAS PROPRIETARY</span></div><button id="ab-close">&#x2715; CLOSE</button><div id="ab-doc">
-<div class="ab-corp-header"><div class="ab-corp-name">Atlas Corporation</div><div class="ab-corp-div">Advanced Research Division &mdash; Document Control</div><div class="ab-corp-sub">Internal Distribution Only &mdash; Not For External Disclosure</div></div>
-<div class="ab-stamp-row"><div><div class="ab-ts-stamp">[CLASSIFIED]</div><div style="font-size:.52rem;color:rgba(139,0,0,.5);margin-top:5px;">ATLAS-BLACK &nbsp;/&nbsp; COMPARTMENTED &nbsp;/&nbsp; ARD-EYES-ONLY</div></div><div class="ab-doc-ref">DOC REF: ATLAS/ARD/2024/PROG-001<br>DATE: <span id="ab-date"></span><br>COPY: <span class="ab-redact">003</span> of <span class="ab-redact">007</span><br>HANDLING: EYES ONLY — DO NOT COPY</div></div>
-<div class="ab-doc-title"><h1>Advanced Research Division &mdash; Program Architecture Brief</h1><p>Subject: Autonomous Systems Development &mdash; Internal Disclosure</p><p>Ref: ARD Standing Directive &mdash; Clause <span class="ab-redact">7(c)(iv)</span> &mdash; Black Program Oversight</p></div>
-<div class="ab-meta-block"><table><tr><td>Program Code</td><td>ATLAS-BLACK / <span class="ab-redact">████████</span></td></tr><tr><td>Originator</td><td>A. Singh &mdash; Founder &amp; Chief Architect</td></tr><tr><td>Classification</td><td>ARD-BLACK (Above Company Confidential)</td></tr><tr><td>Program Phase</td><td>Phase 0 &mdash; Pre-Formal Establishment</td></tr><tr><td>Facility</td><td><span class="ab-redact">████████████████</span>, India</td></tr><tr><td>Reporting Chain</td><td>Founder &rarr; <span class="ab-redact">████████████████████████████</span></td></tr><tr><td>External Disclosure</td><td><strong>PROHIBITED</strong> &mdash; Incl. regulatory &amp; government bodies</td></tr></table></div>
-<div class="ab-section"><div class="ab-section-num">Section 1</div><h3>Strategic Context</h3><div class="ab-body"><p>Atlas Corporation dependency on third-party vendors represents an unacceptable risk. Supply chain exposure, IP leakage, and regulatory interference assessed as Tier-1 threats.</p><p>The ARD is established to develop all critical technologies in-house, under full Atlas IP ownership, outside the visibility of <span class="ab-redact">████████████████████████████████████████</span>. No external contractors, no government co-funding, no disclosure obligations.</p></div><div class="ab-annotation">Internal threat assessment <span class="ab-redact">ARD-TA-2024-██</span>: external vendor risk classified as program-critical. Full vertical integration mandated.</div></div>
-<div class="ab-section"><div class="ab-section-num">Section 2</div><h3>Program Objectives</h3><div class="ab-body"><p>Develop full-stack autonomous systems capability entirely within Atlas. Achieve operational edge-AI inference with zero cloud dependency. Build C2 software architecture for multi-domain autonomous operations.</p><p>Research and prototype <span class="ab-redact">compact power systems</span> for extended-endurance platforms. Establish orbital sensor layer. All output Atlas proprietary.</p></div></div>
-<div class="ab-section"><div class="ab-section-num">Section 3</div><h3>Active Work Streams</h3><table class="ab-program-table"><tr><th>Work Stream</th><th>Code</th><th>Status</th><th>Notes</th></tr><tr><td>Edge AI / Vision</td><td>PROJECT-IRIS</td><td class="ab-status-active">ACTIVE</td><td>Object inference, embedded camera, local LLM.</td></tr><tr><td>C2 Software</td><td>ATLAS-OS</td><td class="ab-status-active">ACTIVE</td><td>Multi-domain command interface.</td></tr><tr><td>Sensor Mesh</td><td><span class="ab-redact">MESH-NODE</span></td><td class="ab-status-dev">IN DEV</td><td>Low-power MCU mesh.</td></tr><tr><td>Signature Control</td><td><span class="ab-redact">██████████</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td><td><span class="ab-redact-line" style="width:90%"></span></td></tr><tr><td>Power Systems</td><td><span class="ab-redact">TRISO-X</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td><td>Compact <span class="ab-redact">reactor / Brayton</span> cycle.</td></tr><tr><td>Orbital Layer</td><td><span class="ab-redact">GRID-EYE</span></td><td class="ab-status-class">LONG-TERM</td><td>Phase IV target.</td></tr></table></div>
-<div class="ab-section"><div class="ab-section-num">Section 4</div><h3>Founder Profile</h3><div class="ab-body"><p>B.Tech ECE. Flight Computer Lead, aerospace contractor 2022-2023. Sole firmware owner, flight-critical embedded Linux systems. Sensor fusion, real-time control on live platforms.</p><p>Core capability: embedded C, edge-AI, autonomous platform architecture, C2 software.</p></div><div class="ab-annotation">ARD access level: UNRESTRICTED. Clearance granted by founder authority.</div></div>
-<div class="ab-section"><div class="ab-section-num">Section 5</div><h3>Withheld Annexures</h3><div class="ab-body"><p>Annex A &mdash; <span class="ab-redact-line" style="width:74%"></span></p><p>Annex B &mdash; <span class="ab-redact-line" style="width:60%"></span></p><p>Annex C &mdash; <span class="ab-redact-line" style="width:82%"></span></p><p>Annex D &mdash; <span class="ab-redact-line" style="width:50%"></span></p></div></div>
-<div class="ab-signature-block"><div><div class="ab-sig-field"></div><div class="ab-sig-label">Program Architect &mdash; Signature / Date</div></div><div><div class="ab-sig-field"></div><div class="ab-sig-label">ARD Oversight &mdash; <span class="ab-redact">REDACTED</span></div></div></div>
-<div class="ab-footer-strip">Unauthorised disclosure constitutes a breach of Atlas Corporation confidentiality agreements and may be pursued under applicable trade secret law. Document to be destroyed after review.</div>
+<div class="ab-corp-header"><div class="ab-corp-name">Atlas Corporation</div><div class="ab-corp-div">Advanced Research Division</div></div>
+<div class="ab-stamp-row"><div><div class="ab-ts-stamp">[CLASSIFIED]</div></div><div class="ab-doc-ref">ATLAS/ARD/2024/PROG-001<br>EYES ONLY</div></div>
+<div class="ab-doc-title"><h1>Program Architecture Brief</h1><p>Autonomous Systems Development</p></div>
+<div class="ab-meta-block"><table><tr><td>Originator</td><td>A. Singh &#8212; Founder</td></tr><tr><td>Classification</td><td>ARD-BLACK</td></tr><tr><td>Facility</td><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span>, India</td></tr><tr><td>External Disclosure</td><td><strong>PROHIBITED</strong></td></tr></table></div>
+<div class="ab-section"><div class="ab-section-num">Section 1</div><h3>Active Work Streams</h3><table class="ab-program-table"><tr><th>Stream</th><th>Code</th><th>Status</th></tr><tr><td>Edge AI</td><td>PROJECT-IRIS</td><td class="ab-status-active">ACTIVE</td></tr><tr><td>C2 Software</td><td>ATLAS-OS</td><td class="ab-status-active">ACTIVE</td></tr><tr><td>Sensor Mesh</td><td><span class="ab-redact">MESH-NODE</span></td><td class="ab-status-dev">IN DEV</td></tr><tr><td>Power Systems</td><td><span class="ab-redact">TRISO-X</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td></tr><tr><td>Orbital Layer</td><td><span class="ab-redact">GRID-EYE</span></td><td class="ab-status-class">LONG-TERM</td></tr></table></div>
+<div class="ab-section"><div class="ab-section-num">Section 2</div><h3>Withheld Annexures</h3><div class="ab-body"><p>Annex A &#8212; <span class="ab-redact-line" style="width:74%"></span></p><p>Annex B &#8212; <span class="ab-redact-line" style="width:60%"></span></p><p>Annex C &#8212; <span class="ab-redact-line" style="width:82%"></span></p></div></div>
+<div class="ab-footer-strip">Destroy after review. Unauthorised disclosure is a breach of Atlas Corporation confidentiality.</div>
 </div></div>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div id="cursor"></div><div id="cursor-ring"></div>
 </body>
 </html>
