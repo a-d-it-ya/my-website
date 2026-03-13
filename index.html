@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aditya Singh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -909,7 +909,19 @@ body {
   #signal-left { padding: 60px 24px; }
 }
 
-    #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(212,168,32,0.3);overflow:hidden;}
+    #atlas-auth{position:fixed;inset:0;z-index:9900;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+    #atlas-auth.active{opacity:1;pointer-events:all;}
+    #auth-lines{font-family:'Courier New',monospace;font-size:0.78rem;letter-spacing:0.12em;color:#888;line-height:2.2;text-align:left;width:420px;margin-bottom:24px;}
+    .auth-line{opacity:0;transform:translateY(4px);transition:opacity 0.25s,transform 0.25s;}
+    .auth-line.show{opacity:1;transform:none;}
+    .auth-line.ok{color:#00ff88;}
+    .auth-line.sys{color:#d4a820;font-weight:bold;}
+    .auth-line.err-t{color:#ff4444;}
+    #auth-bar-wrap{width:420px;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+    #auth-bar{height:100%;width:0%;background:linear-gradient(90deg,#d4a820,#fff8c0);transition:width 0.1s linear;}
+
+  
+    #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(212,168,32,0.3);overflow:visible;}
     #shelf-tube{position:absolute;top:0;left:40px;right:40px;height:4px;background:linear-gradient(90deg,transparent,rgba(248,238,200,.92) 15%,rgba(255,250,220,1.0) 50%,rgba(248,238,200,.92) 85%,transparent);box-shadow:0 0 14px 5px rgba(235,215,155,.75),0 0 40px 14px rgba(210,180,110,.4);animation:flk 7s infinite;z-index:2;}
     #shelf-cast{position:absolute;top:4px;left:0;right:0;height:100%;background:linear-gradient(to bottom,rgba(230,210,145,.28) 0%,rgba(205,178,112,.14) 25%,rgba(180,155,90,.05) 55%,transparent 75%);animation:flk 7s infinite;pointer-events:none;z-index:1;}
     #book-shelf{background:none!important;position:relative;z-index:1;overflow:visible;cursor:none;}
@@ -1622,6 +1634,33 @@ function initBookShelf() {
     return g;
   }
 
+  // multiple sticky notes taped along the top edge of the shelf
+  (function(){
+    const housing = document.getElementById('shelf-housing');
+    housing.style.overflow = 'visible';
+
+    const stickies = [
+      { left: '4%',  color: '#f9ef4a', rotate: '-3deg', label: 'LEARNING', lines: ['Java +', 'Spring Boot'], sub: '→ ongoing' },
+      { left: '18%', color: '#ff9ff3', rotate: '2deg',  label: 'OS',       lines: ['Semaphore =', 'signal for sync'], sub: 'mutex ≠ sem' },
+      { left: '32%', color: '#54a0ff', rotate: '-2deg', label: 'CODE',     lines: ['while(1){', '  think();', '}'], sub: null, mono: true },
+      { left: '50%', color: '#5ff557', rotate: '3deg',  label: 'CN',       lines: ['TCP=reliable', 'UDP=fast'], sub: 'OSI: 7 layers' },
+      { left: '66%', color: '#ffa502', rotate: '-1deg', label: 'FORMULA',  lines: ['BW = f₂-f₁', 'fs > 2f'], sub: 'Nyquist' },
+      { left: '82%', color: '#eccc68', rotate: '4deg',  label: 'GATE',     lines: ['Q_next=Q⊕T', 'T flip-flop'], sub: '→ revise' },
+    ];
+
+    stickies.forEach(st => {
+      const s = document.createElement('div');
+      const ff = st.mono ? "'Courier New',monospace" : "'Caveat',cursive";
+      s.style.cssText = `position:absolute;top:-68px;left:${st.left};width:80px;background:${st.color};padding:6px 8px 8px;transform:rotate(${st.rotate});box-shadow:2px 3px 8px rgba(0,0,0,0.5);z-index:20;`;
+      const tape = `<div style="position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:28px;height:12px;background:rgba(255,255,255,0.45);border-radius:1px;"></div>`;
+      const lbl  = `<div style="font-size:.42rem;font-weight:700;color:rgba(0,0,0,0.4);letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;font-family:'Courier New',monospace;">${st.label}</div>`;
+      const body = st.lines.map(l=>`<div style="font-family:${ff};font-size:${st.mono?'.6rem':'.8rem'};font-weight:700;color:#0f0f0f;line-height:1.3;">${l}</div>`).join('');
+      const sub  = st.sub ? `<div style="font-family:'Caveat',cursive;font-size:.62rem;color:rgba(0,0,0,0.45);margin-top:4px;">${st.sub}</div>` : '';
+      s.innerHTML = tape + lbl + body + sub;
+      housing.appendChild(s);
+    });
+  })();
+
   BOOKS.forEach((book, i) => {
     if(i===10) shelf.appendChild(makeGlobe());
     const wrap=document.createElement('div');wrap.className='shelf-book';wrap.style.height=book.h+'px';
@@ -1925,6 +1964,7 @@ function initFooterTime() {
 }
 
 </script>
+<div id="atlas-auth"><div id="auth-lines"></div><div id="auth-bar-wrap"><div id="auth-bar"></div></div></div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('ab-close').addEventListener('click',function(){document.getElementById('atlas-briefing').classList.remove('open');});
@@ -1936,13 +1976,106 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <div id="ss-warning"><div class="ss-icon">&#9888;</div><div class="ss-title">Screenshot Detected</div><div class="ss-msg">ATLAS-BLACK // COMPARTMENTED<br>Unauthorised capture noted.</div></div>
 <div id="atlas-briefing"><div id="ab-watermark"><span>ATLAS PROPRIETARY</span></div><button id="ab-close">&#x2715; CLOSE</button><div id="ab-doc">
-<div class="ab-corp-header"><div class="ab-corp-name">Atlas Corporation</div><div class="ab-corp-div">Advanced Research Division</div></div>
-<div class="ab-stamp-row"><div><div class="ab-ts-stamp">[CLASSIFIED]</div></div><div class="ab-doc-ref">ATLAS/ARD/2024/PROG-001<br>EYES ONLY</div></div>
-<div class="ab-doc-title"><h1>Program Architecture Brief</h1><p>Autonomous Systems Development</p></div>
-<div class="ab-meta-block"><table><tr><td>Originator</td><td>A. Singh &#8212; Founder</td></tr><tr><td>Classification</td><td>ARD-BLACK</td></tr><tr><td>Facility</td><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span>, India</td></tr><tr><td>External Disclosure</td><td><strong>PROHIBITED</strong></td></tr></table></div>
-<div class="ab-section"><div class="ab-section-num">Section 1</div><h3>Active Work Streams</h3><table class="ab-program-table"><tr><th>Stream</th><th>Code</th><th>Status</th></tr><tr><td>Edge AI</td><td>PROJECT-IRIS</td><td class="ab-status-active">ACTIVE</td></tr><tr><td>C2 Software</td><td>ATLAS-OS</td><td class="ab-status-active">ACTIVE</td></tr><tr><td>Sensor Mesh</td><td><span class="ab-redact">MESH-NODE</span></td><td class="ab-status-dev">IN DEV</td></tr><tr><td>Power Systems</td><td><span class="ab-redact">TRISO-X</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td></tr><tr><td>Orbital Layer</td><td><span class="ab-redact">GRID-EYE</span></td><td class="ab-status-class">LONG-TERM</td></tr></table></div>
-<div class="ab-section"><div class="ab-section-num">Section 2</div><h3>Withheld Annexures</h3><div class="ab-body"><p>Annex A &#8212; <span class="ab-redact-line" style="width:74%"></span></p><p>Annex B &#8212; <span class="ab-redact-line" style="width:60%"></span></p><p>Annex C &#8212; <span class="ab-redact-line" style="width:82%"></span></p></div></div>
-<div class="ab-footer-strip">Destroy after review. Unauthorised disclosure is a breach of Atlas Corporation confidentiality.</div>
+
+<div class="ab-corp-header"><div class="ab-corp-name">Atlas Corporation</div><div class="ab-corp-div">Advanced Research Division &nbsp;&#8212;&nbsp; Founding Directorate</div></div>
+
+<div class="ab-stamp-row">
+  <div><div class="ab-ts-stamp">[TOP SECRET]</div><div class="ab-ts-stamp" style="margin-top:6px;font-size:.75rem;color:#4a0000;border-color:#4a0000;">ARD-BLACK</div></div>
+  <div class="ab-doc-ref">REF: ATLAS/ARD/2024/PROG-001-F<br>COPY: 001 OF 001<br>EYES ONLY &mdash; FOUNDER ACCESS<br>DATE: <span id="ab-date">&mdash;</span></div>
+</div>
+
+<div class="ab-doc-title">
+  <h1>Founding Program Architecture Brief</h1>
+  <p>Autonomous Systems &amp; Defense Technology &mdash; Long-Range Development Plan</p>
+  <p style="color:#8b0000;font-size:.55rem;margin-top:4px;">THIS DOCUMENT IS SELF-CLASSIFYING. READING CONSTITUTES ACKNOWLEDGEMENT.</p>
+</div>
+
+<div class="ab-meta-block"><table>
+  <tr><td>Originator</td><td>A. Singh &mdash; Founder &amp; Chief Architect</td></tr>
+  <tr><td>Classification</td><td>ARD-BLACK // ATLAS PROPRIETARY</td></tr>
+  <tr><td>Facility</td><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span>, India</td></tr>
+  <tr><td>Clearance Required</td><td>ALPHA-1 MINIMUM</td></tr>
+  <tr><td>External Disclosure</td><td><strong>PROHIBITED. VIOLATORS WILL BE PROSECUTED.</strong></td></tr>
+  <tr><td>Review Cycle</td><td>Continuous &mdash; updated as programs evolve</td></tr>
+</table></div>
+
+<div class="ab-section">
+  <div class="ab-section-num">Section 1 &mdash; Executive Summary</div>
+  <h3>Founding Intent</h3>
+  <div class="ab-body">
+    <p>Atlas Corporation is a long-range defense technology and autonomous systems company conceived and being built by A. Singh. The company does not yet exist in registered form. It exists as a technical direction, a set of active programs, and a founding philosophy: that the most consequential technology of the next fifty years will be built by people who understand both code and physics &mdash; not one or the other.</p>
+    <p>The founding thesis holds that autonomous systems, edge AI, and advanced propulsion represent a convergence point. Whoever controls that convergence controls the security architecture of the next century. Atlas intends to be at that convergence &mdash; not as a contractor, but as an originator.</p>
+    <p>All core technology is to be developed internally. No critical capability will be outsourced. <span class="ab-redact-stamp">DOCTRINE</span></p>
+  </div>
+</div>
+
+<div class="ab-section">
+  <div class="ab-section-num">Section 2 &mdash; Active Programs</div>
+  <h3>Current Work Streams</h3>
+  <table class="ab-program-table">
+    <tr><th>Program</th><th>Code Name</th><th>Domain</th><th>Status</th></tr>
+    <tr><td>Local AI Vision System</td><td>PROJECT-IRIS / FRIDAY</td><td>Edge AI, Vision</td><td class="ab-status-active">ACTIVE</td></tr>
+    <tr><td>Command &amp; Control UI</td><td>ATLAS-OS</td><td>C2, Defense Software</td><td class="ab-status-active">ACTIVE</td></tr>
+    <tr><td>Distributed Sensor Mesh</td><td><span class="ab-redact">MESH-NODE-7</span></td><td>STM32, Zigbee, TFLite</td><td class="ab-status-dev">IN DEVELOPMENT</td></tr>
+    <tr><td>Threat Monitoring System</td><td>SENTINEL</td><td>Java, Kafka, LLM</td><td class="ab-status-dev">IN DEVELOPMENT</td></tr>
+    <tr><td>Unmanned Ground Systems</td><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span></td><td>Robotics, ROS2</td><td class="ab-status-class">PLANNED</td></tr>
+    <tr><td>Power Systems Research</td><td><span class="ab-redact">TRISO-X</span></td><td>Nuclear, Brayton Cycle</td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td></tr>
+    <tr><td>Orbital Surveillance Layer</td><td><span class="ab-redact">GRID-EYE</span></td><td>Satellite, Swarm</td><td class="ab-status-class">LONG-TERM</td></tr>
+    <tr><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span></td><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span></td><td><span class="ab-redact">&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</span></td><td class="ab-status-class"><span class="ab-redact-stamp">REDACTED</span></td></tr>
+  </table>
+</div>
+
+<div class="ab-section">
+  <div class="ab-section-num">Section 3 &mdash; Doctrine</div>
+  <h3>Operational Philosophy</h3>
+  <div class="ab-body">
+    <p>Atlas operates on a doctrine of <em>total technical ownership</em>. Every sensor, every firmware stack, every inference engine, every propulsion system will be designed and built in-house. This is not idealism &mdash; it is a security requirement. Dependence on external suppliers creates attack surfaces. Atlas does not accept attack surfaces.</p>
+    <p>The Advanced Research Division exists to push the boundary of what is possible before the market knows it is needed. ARD projects are classified by default. Public disclosure requires Founder approval. <span class="ab-redact-stamp">ARD-DOCTRINE</span></p>
+    <p>Personnel working on ARD programs are selected for obsession, not credentials. The founding team does not yet exist. The founding criteria do. <span class="ab-redact-stamp">HR-BLACK</span></p>
+  </div>
+</div>
+
+<div class="ab-section">
+  <div class="ab-section-num">Section 4 &mdash; Technology Roadmap</div>
+  <h3>Phase Architecture (Abridged)</h3>
+  <div class="ab-body">
+    <p><strong>Phase I (Now &mdash; 2026):</strong> Firmware expertise. Edge AI integration. STM32 sensor mesh production. Atlas OS C2 interface live. Embedded roles at Tier-1 defense-adjacent companies to build domain credibility and capital.</p>
+    <p><strong>Phase II (2026 &mdash; 2028):</strong> <span class="ab-redact-line" style="width:88%"></span></p>
+    <p><strong>Phase III (2028 &mdash; 2031):</strong> <span class="ab-redact-line" style="width:72%"></span></p>
+    <p><strong>Phase IV:</strong> <span class="ab-redact-line" style="width:91%"></span><span class="ab-redact-stamp">FOUNDER EYES ONLY</span></p>
+  </div>
+</div>
+
+<div class="ab-section">
+  <div class="ab-section-num">Section 5 &mdash; Threat Model</div>
+  <h3>Strategic Risk Assessment</h3>
+  <div class="ab-body">
+    <p>Primary risk: time. The window for founding a defense-technology company from first principles is not indefinitely open. The convergence of AI, robotics, and miniaturized power systems is happening now. Founders who arrive late will find the design space occupied.</p>
+    <p>Secondary risk: <span class="ab-redact-line" style="width:65%"></span></p>
+    <p>Tertiary risk: <span class="ab-redact-line" style="width:58%"></span><span class="ab-redact-stamp">CLASSIFIED</span></p>
+    <p>Mitigation strategy for all identified risks: <span class="ab-redact-line" style="width:80%"></span></p>
+  </div>
+</div>
+
+<div class="ab-section">
+  <div class="ab-section-num">Section 6 &mdash; Withheld Annexures</div>
+  <h3>Classified Attachments</h3>
+  <div class="ab-body">
+    <p>Annex A &nbsp;&mdash;&nbsp; <span class="ab-redact-line" style="width:78%"></span></p>
+    <p>Annex B &nbsp;&mdash;&nbsp; <span class="ab-redact-line" style="width:63%"></span></p>
+    <p>Annex C &nbsp;&mdash;&nbsp; <span class="ab-redact-line" style="width:85%"></span></p>
+    <p>Annex D &nbsp;&mdash;&nbsp; <span class="ab-redact-line" style="width:55%"></span><span class="ab-redact-stamp">TRISO-X ONLY</span></p>
+    <p>Annex E &nbsp;&mdash;&nbsp; <span class="ab-redact-line" style="width:70%"></span><span class="ab-redact-stamp">ARD-BLACK</span></p>
+    <p style="margin-top:16px;color:#8b0000;font-size:.6rem;">6 annexures withheld under ATLAS/ARD standing directive. Request via secure channel only.</p>
+  </div>
+</div>
+
+<div class="ab-footer-strip">
+  This document is classified ATLAS-BLACK. Destroy after review.<br>
+  Unauthorised disclosure is a breach of Atlas Corporation founding confidentiality doctrine.<br>
+  <span style="color:#8b0000;">Violations are remembered.</span>
+</div>
+
 </div></div>
 <div id="cursor"></div><div id="cursor-ring"></div>
 </body>
