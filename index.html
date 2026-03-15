@@ -1112,6 +1112,82 @@ body {
     }
 
   
+    /* CRT ENTER BUTTON — retro mode */
+    #entry.retro-on #entry-btn {
+      color: #00ff41 !important;
+      border-color: #00ff41 !important;
+      background: rgba(0,255,65,0.05) !important;
+      text-shadow: 0 0 8px #00ff41, 0 0 20px rgba(0,255,65,0.5) !important;
+      box-shadow: 0 0 12px rgba(0,255,65,0.3), inset 0 0 8px rgba(0,255,65,0.05) !important;
+      letter-spacing: .25em !important;
+      animation: crt-flicker 3s infinite !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    #entry.retro-on #entry-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,255,65,0.04) 2px,
+        rgba(0,255,65,0.04) 4px
+      );
+      pointer-events: none;
+      animation: scanline-move 4s linear infinite;
+    }
+    @keyframes scanline-move {
+      from { background-position: 0 0; }
+      to   { background-position: 0 100px; }
+    }
+    @keyframes crt-flicker {
+      0%,19%,21%,23%,100% {
+        opacity: 1;
+        text-shadow: 0 0 8px #00ff41, 0 0 20px rgba(0,255,65,0.5);
+      }
+      20%,22% { opacity: 0.3; text-shadow: none; }
+    }
+
+  
+    #mini-player {
+      position: fixed; top: 20px; right: 80px; z-index: 8000;
+      font-family: var(--mono); font-size: .48rem; letter-spacing: .1em;
+      background: rgba(10,8,6,0.85); border: 1px solid rgba(255,48,48,0.25);
+      padding: 7px 12px; display: flex; align-items: center; gap: 10px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s;
+      box-shadow: 0 0 14px rgba(255,48,48,0.1);
+      backdrop-filter: blur(4px);
+    }
+    #mini-player.visible { opacity: 1; pointer-events: all; }
+    #mini-vinyl {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background:
+        radial-gradient(circle at center, #1a1a1a 30%, transparent 30%),
+        repeating-conic-gradient(#1a1a1a 0deg, #2a2a2a 3deg, #1a1a1a 6deg);
+      border: 1.5px solid #333;
+      animation: spin-vinyl 2s linear infinite;
+      animation-play-state: paused;
+      position: relative;
+    }
+    #mini-vinyl.playing { animation-play-state: running; }
+    #mini-vinyl::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #ff3030; box-shadow: 0 0 3px #ff3030;
+    }
+    .mini-info { line-height: 1.6; }
+    .mini-title { color: rgba(244,240,232,0.7); font-size: .46rem; }
+    #mini-play {
+      color: #ff3030; background: none; border: none;
+      cursor: pointer; font-size: .75rem;
+      text-shadow: 0 0 6px rgba(255,48,48,0.5);
+      flex-shrink: 0;
+    }
+
+  
     #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(212,168,32,0.3);overflow:visible;}
     #shelf-tube{position:absolute;top:0;left:40px;right:40px;height:4px;background:linear-gradient(90deg,transparent,rgba(248,238,200,.92) 15%,rgba(255,250,220,1.0) 50%,rgba(248,238,200,.92) 85%,transparent);box-shadow:0 0 14px 5px rgba(235,215,155,.75),0 0 40px 14px rgba(210,180,110,.4);animation:flk 7s infinite;z-index:2;}
     #shelf-cast{position:absolute;top:4px;left:0;right:0;height:100%;background:linear-gradient(to bottom,rgba(230,210,145,.28) 0%,rgba(205,178,112,.14) 25%,rgba(180,155,90,.05) 55%,transparent 75%);animation:flk 7s infinite;pointer-events:none;z-index:1;}
@@ -1183,7 +1259,7 @@ body {
     <span id="flicker-aditya"><span class="fl">A</span><span class="fl">D</span><span class="fl">I</span><span class="fl">T</span><span class="fl">Y</span><span class="fl">A</span></span>
     <em><span id="flicker-singh"><span class="fl">S</span><span class="fl">I</span><span class="fl">N</span><span class="fl">G</span><span class="fl">H</span></span></em>
   </div>
-  <div class="entry-sub" id="entry-sub"></div>
+  <div class="entry-sub" id="entry-sub">Engineer. Builder. Still figuring out what it all amounts to.</div>
   <button class="entry-enter" id="entry-btn">Enter →</button>
   <button id="retro-btn">RETRO</button>
   <div id="music-player">
@@ -1198,13 +1274,18 @@ body {
       <div class="vinyl-label">Side A<br>Life Could Be A Dream</div>
     </div>
   </div>
-  <audio id="mp-audio" src="./Street_Corner_Renaissance_-_Life_Could_Be_A_Dream.mp3" loop></audio>
 </div>
 
 <!-- ══ MAIN SITE ══ -->
+<audio id="mp-audio" src="./Street_Corner_Renaissance_-_Life_Could_Be_A_Dream.mp3" loop></audio>
 <div id="site">
 
   <div id="corner-id">A.SINGH / ONGOING</div>
+  <div id="mini-player">
+    <div id="mini-vinyl"></div>
+    <div class="mini-info"><div class="mini-title">Life Could Be A Dream</div></div>
+    <button id="mini-play">⏸</button>
+  </div>
 
   <!-- Floating nav -->
   <nav id="nav-hub">
@@ -1570,6 +1651,25 @@ function enterSite() {
   en.classList.add('gone');
   document.getElementById('site').classList.add('visible');
   initAll();
+  // mini player setup
+  const mpAudio = document.getElementById('mp-audio');
+  const mp = document.getElementById('mini-player');
+  const mv = document.getElementById('mini-vinyl');
+  const mpBtn = document.getElementById('mini-play');
+  if (mpAudio && mp) {
+    // show if already playing
+    if (!mpAudio.paused) { mp.classList.add('visible'); if(mv) mv.classList.add('playing'); }
+    // wire play/pause
+    if (mpBtn) {
+      mpBtn.addEventListener('click', () => {
+        if (mpAudio.paused) { mpAudio.play(); mpBtn.textContent='⏸'; if(mv) mv.classList.add('playing'); }
+        else { mpAudio.pause(); mpBtn.textContent='▶'; if(mv) mv.classList.remove('playing'); }
+      });
+    }
+    // keep vinyl in sync
+    mpAudio.addEventListener('play',  () => { mp.classList.add('visible'); if(mv) mv.classList.add('playing'); if(mpBtn) mpBtn.textContent='⏸'; });
+    mpAudio.addEventListener('pause', () => { if(mv) mv.classList.remove('playing'); if(mpBtn) mpBtn.textContent='▶'; });
+  }
 }
 document.getElementById('entry-btn').addEventListener('click', enterSite);
 initRetro();
@@ -1741,18 +1841,21 @@ function initTypewriter() {
   const el = document.getElementById('entry-sub');
   if (!el) return;
   const text = "Engineer. Builder. Still figuring out what it all amounts to.";
+  el.innerHTML = '';
   let i = 0;
-  const cursor = document.createElement('span');
-  cursor.className = 'cursor-blink';
-  el.appendChild(cursor);
   function type() {
     if (i < text.length) {
-      el.insertBefore(document.createTextNode(text[i]), cursor);
+      el.textContent = text.slice(0, i + 1) + '|';
       i++;
       setTimeout(type, 45 + Math.random() * 40);
+    } else {
+      el.textContent = text;
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor-blink';
+      el.appendChild(cursor);
     }
   }
-  setTimeout(type, 600);
+  setTimeout(type, 300);
 }
 
 // ══ PARTICLES ══
@@ -1812,10 +1915,15 @@ function initRetro() {
       playBtn.textContent = '⏸';
       if(vinyl){vinyl.classList.add('playing');vinylWrap.classList.add('visible');}
       if(!typewriterDone){typewriterDone=true;initTypewriter();}
+      const eb=document.getElementById('entry-btn'); if(eb) eb.textContent='[ ENTER → ]';
     } else {
       audio.pause();
       playBtn.textContent = '▶';
       if(vinyl){vinyl.classList.remove('playing');vinylWrap.classList.remove('visible');}
+      const eb2=document.getElementById('entry-btn'); if(eb2) eb2.textContent='Enter →';
+      const sub=document.getElementById('entry-sub');
+      if(sub) sub.innerHTML='Engineer. Builder. Still figuring out what it all amounts to.';
+      typewriterDone=false;
     }
   });
 
@@ -1827,6 +1935,10 @@ function initRetro() {
       audio.pause();
       playBtn.textContent = '▶';
       if(vinyl){vinyl.classList.remove('playing');vinylWrap.classList.remove('visible');}
+      const eb2=document.getElementById('entry-btn'); if(eb2) eb2.textContent='Enter →';
+      const sub=document.getElementById('entry-sub');
+      if(sub) sub.innerHTML='Engineer. Builder. Still figuring out what it all amounts to.';
+      typewriterDone=false;
     }
   });
 
