@@ -1188,6 +1188,27 @@ body {
     }
 
   
+    #matrix-overlay {
+      position: fixed; inset: 0; z-index: 999999;
+      background: #000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.5s;
+    }
+    #matrix-overlay.active { opacity: 1; pointer-events: all; }
+    #matrix-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    #matrix-msg {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem; letter-spacing: .2em;
+      color: #00ff41;
+      text-shadow: 0 0 10px #00ff41, 0 0 30px rgba(0,255,65,0.5);
+      text-align: center; line-height: 2;
+      opacity: 0; transition: opacity 0.5s;
+    }
+    #matrix-msg.visible { opacity: 1; }
+
+  
     #shelf-housing{position:relative;background:#1a1a16;border:1px solid rgba(244,240,232,0.14);border-bottom:3px solid rgba(212,168,32,0.3);overflow:visible;}
     #shelf-tube{position:absolute;top:0;left:40px;right:40px;height:4px;background:linear-gradient(90deg,transparent,rgba(248,238,200,.92) 15%,rgba(255,250,220,1.0) 50%,rgba(248,238,200,.92) 85%,transparent);box-shadow:0 0 14px 5px rgba(235,215,155,.75),0 0 40px 14px rgba(210,180,110,.4);animation:flk 7s infinite;z-index:2;}
     #shelf-cast{position:absolute;top:4px;left:0;right:0;height:100%;background:linear-gradient(to bottom,rgba(230,210,145,.28) 0%,rgba(205,178,112,.14) 25%,rgba(180,155,90,.05) 55%,transparent 75%);animation:flk 7s infinite;pointer-events:none;z-index:1;}
@@ -1948,6 +1969,81 @@ function initRetro() {
   });
 }
 
+
+// ══ KONAMI CODE + MATRIX RAIN ══
+(function(){
+  const KONAMI = [38,38,40,40,37,39,37,39,66,65];
+  let idx = 0;
+  document.addEventListener('keydown', e => {
+    if (e.keyCode === KONAMI[idx]) {
+      idx++;
+      if (idx === KONAMI.length) {
+        idx = 0;
+        triggerMatrix();
+      }
+    } else {
+      idx = e.keyCode === KONAMI[0] ? 1 : 0;
+    }
+  });
+
+  function triggerMatrix() {
+    const overlay = document.getElementById('matrix-overlay');
+    const cv = document.getElementById('matrix-canvas');
+    const msg = document.getElementById('matrix-msg');
+    const ctx = cv.getContext('2d');
+
+    cv.width = window.innerWidth;
+    cv.height = window.innerHeight;
+
+    overlay.classList.add('active');
+    document.body.style.cursor = 'none';
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    if(cur) cur.style.opacity='0';
+    if(ring) ring.style.opacity='0';
+
+    const cols = Math.floor(cv.width / 16);
+    const drops = Array(cols).fill(1);
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+
+    let frame = 0;
+    const iv = setInterval(() => {
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
+      ctx.fillRect(0, 0, cv.width, cv.height);
+      ctx.fillStyle = '#00ff41';
+      ctx.font = '14px monospace';
+
+      drops.forEach((y, i) => {
+        const ch = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillStyle = frame < 20 ? '#00ff41' : (Math.random() > 0.95 ? '#fff' : '#00ff41');
+        ctx.fillText(ch, i * 16, y * 16);
+        if (y * 16 > cv.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+
+      frame++;
+      if (frame === 60) { msg.classList.add('visible'); }
+    }, 50);
+
+    // fade out after 5s
+    setTimeout(() => {
+      msg.classList.remove('visible');
+      setTimeout(() => {
+        overlay.style.transition = 'opacity 1.5s';
+        overlay.classList.remove('active');
+        setTimeout(() => {
+          clearInterval(iv);
+          ctx.clearRect(0, 0, cv.width, cv.height);
+          overlay.style.transition = 'opacity 0.5s';
+        document.body.style.cursor = '';
+        if(cur) cur.style.opacity='1';
+        if(ring) ring.style.opacity='1';
+        }, 1500);
+      }, 800);
+    }, 5000);
+  }
+})();
+
 function initUptime() {
   const el = document.getElementById('uptime-val');
   const start = new Date('2002-04-19T00:00:00');
@@ -2395,6 +2491,12 @@ function initFooterTime() {
 
 </script>
 <div id="atlas-auth"><div id="auth-lines"></div><div id="auth-bar-wrap"><div id="auth-bar"></div></div></div>
+
+<div id="matrix-overlay">
+  <canvas id="matrix-canvas"></canvas>
+  <div id="matrix-msg">WAKE UP, ADITYA...<br><span style="font-size:.7rem;color:rgba(0,255,65,0.6);">the matrix has you.</span></div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('ab-close').addEventListener('click',function(){document.getElementById('atlas-briefing').classList.remove('open');});
